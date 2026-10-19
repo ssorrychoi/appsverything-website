@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AppsVerything</title>
+<meta name="description" content="AppsVerything에서 만드는 모바일 앱을 소개해요.">
+<link rel="icon" href="images/liful.png">
+<style>
+  :root {
+    --bg: #fbfaf7; --surface: #ffffff; --text: #1d1d1b; --muted: #6b6a66;
+    --line: #e8e6e1; --accent: #f26b4f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161615; --surface: #201f1e; --text: #f2f1ee; --muted: #a3a19c; --line: #34332f; --accent: #ff8a70; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    word-break: keep-all;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  header { padding: 72px 0 40px; }
+  .name { font-size: 15px; font-weight: 700; letter-spacing: .02em; color: var(--accent); margin: 0 0 12px; }
+  h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.3; margin: 0 0 12px; }
+  .lead { color: var(--muted); font-size: 17px; margin: 0; }
+  h2 { font-size: 20px; margin: 48px 0 16px; }
+  .apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .app {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 24px; display: flex; flex-direction: column; gap: 14px;
+  }
+  .app-head { display: flex; gap: 16px; align-items: center; }
+  .app-head img { width: 64px; height: 64px; border-radius: 16px; flex: none; }
+  .app h3 { margin: 0; font-size: 18px; }
+  .app .tag { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+  .app p { margin: 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+  .links a, .links span {
+    font-size: 14px; padding: 8px 14px; border-radius: 999px; text-decoration: none;
+    border: 1px solid var(--line); color: var(--text);
+  }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .links span { color: var(--muted); }
+  footer { margin: 72px 0 0; padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  footer p { margin: 4px 0; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="name">AppsVerything</p>
+    <h1>매일 손이 가는<br>작은 앱을 만들어요</h1>
+    <p class="lead">생활에 꼭 필요한 기능 하나를 쉽고 가볍게 담아요.</p>
+  </header>
+
+  <main>
+    <h2>앱</h2>
+    <div class="apps">
+      <article class="app">
+        <div class="app-head">
+          <img src="images/liful.png" alt="라이풀 아이콘">
+          <div>
+            <h3>라이풀</h3>
+            <p class="tag">설교노트 · 감사 일기</p>
+          </div>
+        </div>
+        <p>설교 기록부터 결단, 주중의 실천까지 이어주는 설교노트예요.</p>
+        <div class="links">
+          <a class="primary" href="https://apps.apple.com/kr/app/id6757371988" target="_blank" rel="noopener">App Store</a>
+          <span>Google Play 준비 중</span>
+          <a href="https://app.notion.com/p/313d6aff55d780c88213d5a3836ae6ae" target="_blank" rel="noopener">개인정보처리방침</a>
+        </div>
+      </article>
+
+      <article class="app">
+        <div class="app-head">
+          <img src="images/sasang-water.png" alt="체질 물마시기 아이콘">
+          <div>
+            <h3>체질 물마시기</h3>
+            <p class="tag">계절 8체질 테스트 · 물 기록</p>
+          </div>
+        </div>
+        <p>17문항 체질 테스트로 나에게 맞는 물 마시는 방법을 알아보고, 매일 마신 물을 기록해요.</p>
+        <div class="links">
+          <span>출시 준비 중</span>
+          <a href="privacy/sasang-water.html">개인정보처리방침</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p><strong>AppsVerything</strong></p>
+    <p>문의: <a href="mailto:contact@appsverything.com">contact@appsverything.com</a></p>
+  </footer>
+</div>
+</body>
+</html>
