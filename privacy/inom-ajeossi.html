@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="48x48" href="../images/favicon-48.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<title>이놈아저씨 전화 개인정보처리방침</title>
+<style>
+  body { font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; line-height: 1.7; color: #1d1d1b; background: #fff; }
+  h1 { font-size: 24px; } h2 { font-size: 18px; margin-top: 32px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+  th { background: #f5f5f5; }
+  .muted { color: #666; font-size: 14px; }
+</style>
+</head>
+<body>
+<!--
+  게시 전 채울 것:
+  - {시행일}: 스토어 첫 공개일 (공개 직전에 직접 채움)
+  - {Supabase 리전}: Supabase 프로젝트를 만든 지역 (예: 대한민국 서울 / 일본 도쿄)
+  게시 전 확인할 것:
+  - 앱 이름 "이놈아저씨 전화"가 최종 스토어 이름과 같은지
+  - 앱 안에 "광고 개인정보 옵션" 버튼(AdGate.showPrivacyOptions)을 만들면 3번 항목에 그 위치를 추가
+  - 이름 음성 서버(SUPABASE_URL)를 끄고 출시하면 2·3·8번의 Supabase·ElevenLabs 내용을 지운다
+-->
+<h1>이놈아저씨 전화 개인정보처리방침</h1>
+<p class="muted">시행일: {시행일} · 개발자: AppsVerything</p>
+
+<p>이놈아저씨 전화(이하 "앱")는 보호자가 고른 상황에 맞춰 "이놈아저씨"가 아이에게 가짜 전화를 거는 앱이에요. 회원가입이 없고, 보호자의 이름·전화번호·이메일은 받지 않아요. 이 방침은 앱이 어떤 정보를 기기 안에 저장하고, 어떤 정보가 외부 서버로 전송되는지 설명해요.</p>
+
+<h2>1. 이 앱은 보호자가 쓰는 앱이에요</h2>
+<p>앱은 부모 등 보호자가 설치하고 설정해요. 아이 이름은 <strong>보호자가 직접 입력</strong>하며, 이름을 입력하고 저장하는 것은 보호자(법정대리인)가 아래 2번의 처리에 동의하는 것으로 봐요. 실명 대신 애칭을 적어도 돼요.</p>
+
+<h2>2. 처리하는 정보</h2>
+<table>
+  <tr><th>정보</th><th>어디에</th><th>목적</th><th>보관</th></tr>
+  <tr>
+    <td>아이 이름(1~10자)</td>
+    <td>휴대폰 안</td>
+    <td>전화에서 아이 이름 부르기</td>
+    <td>앱 삭제 시 함께 삭제</td>
+  </tr>
+  <tr>
+    <td>아이 이름이 들어간 짧은 문장<br>(예: "지민아,")</td>
+    <td>음성 서버(Supabase) → ElevenLabs</td>
+    <td>아이 이름을 부르는 음성을 한 번 만들기</td>
+    <td>아래 "이름 음성" 참고</td>
+  </tr>
+  <tr>
+    <td>이름 음성 파일(mp3)</td>
+    <td>휴대폰 안, 음성 서버 저장소</td>
+    <td>같은 이름을 다시 만들지 않고 재사용</td>
+    <td>휴대폰: 앱 삭제 시 삭제 / 서버: 아래 참고</td>
+  </tr>
+  <tr>
+    <td>전화 대기 시간, 통화 횟수</td>
+    <td>휴대폰 안</td>
+    <td>앱 설정 유지</td>
+    <td>앱 삭제 시 함께 삭제</td>
+  </tr>
+</table>
+<p><strong>이름 음성:</strong> 보호자가 이름 화면에서 "미리 듣기"나 "저장하기"를 누를 때만 이름이 들어간 문장을 음성 서버로 보내요. 서버는 이 문장으로 합성 음성(AI 음성)을 만들고, 파일 이름을 알아볼 수 없는 값(해시)으로 바꿔 비공개 저장소에 보관해요. 파일 이름에는 이름이 없지만 음성에는 이름이 들어 있어요. 이 파일은 같은 이름을 쓰는 다른 사용자에게도 재사용될 수 있으며, 누가 만들었는지는 기록하지 않아요. 삭제를 원하면 8번 연락처로 지울 이름을 알려 주세요. 7일 안에 지워 드려요.</p>
+<p>음성 서버가 꺼져 있거나 연결에 실패하면 이름 음성은 휴대폰에 내장된 음성(TTS)으로 만들어지며, 이때는 이름이 밖으로 나가지 않아요.</p>
+
+<h2>3. 마이크와 음성 인식</h2>
+<ul>
+  <li>전화 중에 아이 대답을 알아듣기 위해 마이크와 음성 인식을 써요. <strong>녹음 파일은 만들지 않고, 알아들은 문장도 저장하거나 개발자에게 보내지 않아요.</strong></li>
+  <li>음성 인식은 휴대폰 운영체제의 기능(Android: Google 음성 인식, iOS: Apple 음성 인식)을 써요. 기기와 언어 설정에 따라 음성이 Google 또는 Apple 서버에서 처리될 수 있으며, 그 처리는 각 회사의 개인정보처리방침을 따라요.</li>
+  <li>마이크 권한을 허용하지 않아도 앱을 쓸 수 있어요. 이때 이놈아저씨는 대답을 듣지 않고 정해진 대사를 이어 말해요.</li>
+  <li>앱은 실제 전화를 걸지 않고, 연락처·통화 기록·위치·사진에 접근하지 않아요.</li>
+</ul>
+
+<h2>4. 광고와 분석을 위해 Google에 전송되는 정보</h2>
+<p>앱은 무료로 제공되며 광고로 운영돼요. 광고는 홈 화면과 앱 시작·통화 종료 뒤에만 나오고, 전화 화면에는 나오지 않아요. 광고는 모든 연령에 맞는 등급(G)만 요청해요.</p>
+<table>
+  <tr><th>서비스</th><th>전송되는 정보</th><th>목적</th></tr>
+  <tr>
+    <td>Google AdMob<br>(광고)</td>
+    <td>광고 ID 등 기기 식별자, IP 주소(대략적인 위치 추정), 광고·앱 이용 기록(앱 실행, 화면 터치, 광고 시청), 진단 정보</td>
+    <td>광고 표시, 맞춤형 광고(동의한 경우), 광고 성과 측정, 부정 클릭 방지</td>
+  </tr>
+  <tr>
+    <td>Google Analytics for Firebase<br>(이용 통계)</td>
+    <td>앱 인스턴스 ID, 광고 ID, 대략적인 위치(IP 기반), 앱 이용 기록(화면 조회, 세션, 아래 이벤트)</td>
+    <td>이용 통계 분석, 앱 개선</td>
+  </tr>
+  <tr>
+    <td>Firebase Remote Config<br>(원격 설정)</td>
+    <td>국가·언어·시간대, 운영체제 버전, 앱 식별 정보</td>
+    <td>광고 표시 여부 등 앱 설정을 원격으로 조정</td>
+  </tr>
+</table>
+<p>이용 통계로 보내는 앱 이벤트는 다음과 같아요: 이름 설정 여부, 이름 음성 생성 성공 여부, 고른 상황(예: 밥 먹기), 전화 대기 시간, 전화 받음·안 받음, 대답 유형(예: 약속함·싫다고 함·대답 없음), 통화 결과·주고받은 횟수·통화 시간. <strong>아이 이름, 음성, 알아들은 문장은 보내지 않아요.</strong></p>
+<p>전송되는 정보는 암호화(TLS)되어 전송돼요. Google의 정보 처리는 <a href="https://policies.google.com/privacy?hl=ko">Google 개인정보처리방침</a>을 따르며, Google이 파트너 앱의 정보를 사용하는 방식은 <a href="https://policies.google.com/technologies/partner-sites?hl=ko">여기</a>에서 볼 수 있어요.</p>
+
+<h2>5. 광고 동의와 선택</h2>
+<ul>
+  <li>유럽 등 동의가 필요한 지역에서는 앱을 처음 열 때 광고 동의 화면이 나와요.</li>
+  <li>휴대폰 설정에서 광고 ID를 재설정하거나 맞춤 광고를 끌 수 있어요 (Android: 설정 → 개인정보 보호 → 광고 / iOS: 설정 → 개인정보 보호 및 보안 → 추적).</li>
+</ul>
+
+<h2>6. 처리 위탁과 국외 이전</h2>
+<p>앱은 아래 업체에 정보 처리를 맡기며, 일부는 해외에서 처리돼요. 보호자가 이름 화면에서 음성을 만들 때(ElevenLabs), 앱을 쓰는 동안(Google) 네트워크로 전송돼요.</p>
+<table>
+  <tr><th>업체(국가)</th><th>이전되는 정보</th><th>목적</th><th>보유 기간</th></tr>
+  <tr>
+    <td>Supabase Inc.<br>({Supabase 리전})</td>
+    <td>이름이 들어간 문장, 이름 음성 파일, 요청 IP 등 접속 기록</td>
+    <td>이름 음성 생성 요청 중계, 음성 파일 보관</td>
+    <td>음성 파일: 삭제 요청 시까지 / 접속 기록: Supabase 정책</td>
+  </tr>
+  <tr>
+    <td>ElevenLabs Inc.<br>(미국)</td>
+    <td>이름이 들어간 문장</td>
+    <td>합성 음성(AI 음성) 생성</td>
+    <td>ElevenLabs 정책에 따름</td>
+  </tr>
+  <tr>
+    <td>Google LLC<br>(미국)</td>
+    <td>4번 표의 정보</td>
+    <td>광고, 이용 통계, 원격 설정</td>
+    <td>Google 정책에 따름</td>
+  </tr>
+</table>
+<p>ElevenLabs·Supabase로의 이전을 원하지 않으면 실명 대신 애칭을 적어 주세요. 광고·통계 전송은 앱 이용에 필요하므로, 원하지 않으면 앱을 삭제해 주세요.</p>
+
+<h2>7. 아동과 보호자</h2>
+<ul>
+  <li>앱은 보호자가 사용하는 앱이며, 아이는 보호자 곁에서 전화를 받는 방식으로만 참여해요.</li>
+  <li>만 14세 미만 아동의 개인정보(이름)는 법정대리인인 보호자가 직접 입력할 때만 처리해요.</li>
+  <li>보호자는 언제든 이름을 바꾸거나 지울 수 있고(이름 화면), 서버의 이름 음성 삭제를 요청할 수 있어요(8번).</li>
+  <li>너무 자주 쓰면 아이가 겁을 먹을 수 있어요. 꼭 보호자가 옆에 있을 때 써 주세요. 이놈아저씨의 대사는 "잡아간다·때린다" 같은 위협 표현을 쓰지 않아요.</li>
+</ul>
+
+<h2>8. 보관·삭제와 문의</h2>
+<p>휴대폰 안의 정보는 앱을 삭제하면 지워져요. 서버의 이름 음성은 삭제를 요청할 때까지 보관하며, 요청을 받으면 7일 안에 지워요. Google·ElevenLabs에 전송된 정보의 보관 기간과 삭제는 각 회사의 정책을 따라요. 개발자는 보호자나 아이를 식별할 수 있는 다른 정보를 따로 보관하지 않아요.</p>
+<p>개인정보 관련 문의·열람·삭제 요청: <a href="mailto:contact@appsverything.com">contact@appsverything.com</a></p>
+
+<h2>9. 변경</h2>
+<p>이 방침이 바뀌면 이 페이지에 바뀐 내용과 시행일을 알려 드려요.</p>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="48x48" href="../images/favicon-48.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<title>라이풀 개인정보처리방침</title>
+<style>
+  body { font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; line-height: 1.7; color: #1d1d1b; background: #fff; }
+  h1 { font-size: 24px; } h2 { font-size: 18px; margin-top: 32px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+  th { background: #f5f5f5; }
+  .muted { color: #666; font-size: 14px; }
+</style>
+</head>
+<body>
+<!--
+  게시 전 채울 것:
+  - {시행일}: 이 방침을 게시하는 날 (앱은 이미 App Store에 공개됨)
+  이 방침이 약속하는 것 — 코드나 운영이 따라와야 한다 (life-is-beautiful 저장소 기준):
+  - 7번 "탈퇴 후 30일 안에 완전 삭제": 지금 탈퇴는 users/{uid}에 isDeleted만 기록한다.
+    하위 컬렉션·Storage 이미지·Auth 계정을 지우는 처리(Cloud Function 또는 수동)가 필요하다.
+  - 4번 "설교노트 제목": sermon_note_created 이벤트에서 title을 빼면 이 문장을 지운다.
+  - prayer_created 이벤트의 prayer_id 자리에 user.uid가 들어간다 (prayer_section.dart). 기도제목 문서 ID로 고친다.
+  - 5번 광고 동의: UMP 동의를 구현하면 "유럽 등 동의 화면" 문장을 추가한다.
+  - Firestore·Storage 보안 규칙이 저장소에 없어 확인 못 함. 콘솔에서 users/{uid} 하위를 본인만 읽고 쓰게 되어 있으면
+    2번에 "내 기록은 로그인한 본인만 읽고 쓸 수 있어요"를 추가한다.
+  - 앱 설정 화면의 방침 링크(prod-liful.web.app/privacy.html)를 이 페이지로 바꾼다.
+-->
+<h1>라이풀 개인정보처리방침</h1>
+<p class="muted">시행일: {시행일} · 개발자: AppsVerything</p>
+
+<p>라이풀(이하 "앱")은 설교노트, 감사일기, 묵상노트, 기도제목을 기록하는 앱이에요. 기록을 여러 기기에서 안전하게 이어 쓰도록 Google 또는 Apple 계정으로 로그인하고, 기록은 Google Firebase 서버에 저장해요. 이 방침은 어떤 정보를 왜 처리하고, 누구에게 맡기며, 어떻게 지울 수 있는지 설명해요.</p>
+
+<h2>1. 처리하는 정보</h2>
+<table>
+  <tr><th>구분</th><th>정보</th><th>목적</th></tr>
+  <tr>
+    <td>계정</td>
+    <td>Google 또는 Apple 계정의 이메일, 이름, 프로필 사진 주소, 계정 고유 ID<br>(Apple 로그인에서 "이메일 가리기"를 고르면 Apple이 만든 대리 이메일)</td>
+    <td>로그인, 기록을 내 계정에 저장</td>
+  </tr>
+  <tr>
+    <td>사용자가 바꾼 정보</td>
+    <td>닉네임, 프로필 사진(직접 촬영하거나 사진첩에서 고른 경우)</td>
+    <td>프로필 표시</td>
+  </tr>
+  <tr>
+    <td>사용자가 쓴 기록</td>
+    <td>설교노트(제목, 날짜, 예배 종류, 설교자, 성경 구절과 본문, 내용, 결단·적용 항목, 첨부한 필기 사진, AI 삽화), 감사일기(내용, 기분, 날짜), 묵상노트(구절, 묵상, 적용, 기도), 기도제목(내용, 기간, 응답 여부와 응답 간증), 올해의 말씀</td>
+    <td>기록 저장과 표시, 여러 기기 동기화</td>
+  </tr>
+  <tr>
+    <td>기기 정보</td>
+    <td>푸시 알림 토큰, 마지막 접속 시각</td>
+    <td>알림 보내기, 서비스 운영</td>
+  </tr>
+  <tr>
+    <td>광고·분석 정보</td>
+    <td>광고 ID 등 기기 식별자, IP 주소(대략적인 위치), 앱 이용 기록 — 자세한 내용은 4번</td>
+    <td>광고 표시, 이용 통계</td>
+  </tr>
+</table>
+<p><strong>신앙 기록에 대해:</strong> 설교노트·묵상·기도제목에는 신앙에 관한 내용이 담겨요. 이 기록은 사용자가 스스로 쓰고 저장할 때만 서버에 저장되며, 아래 3번의 기도제목 기한 분석을 빼고는 광고나 분석에 쓰지 않고 다른 사람에게 보여 주지 않아요. 저장을 원하지 않는 내용은 적지 말아 주세요.</p>
+<p>아래 정보는 휴대폰 안에만 저장되고 서버로 보내지 않아요: 알림 사용 여부와 시각, 테마 색상·모드, 온보딩 완료 여부, 광고 노출 횟수.</p>
+
+<h2>2. 저장 위치와 보안</h2>
+<p>기록과 계정 정보는 Google Firebase(Cloud Firestore, Cloud Storage, Authentication)에 저장돼요. 모든 통신은 암호화(TLS)되어 전송돼요. 앱이 정상 기기에서 실행될 때만 서버에 접근하도록 Firebase App Check(Android: Play Integrity, iOS: App Attest)를 써요.</p>
+
+<h2>3. AI 기능 (Google Gemini)</h2>
+<p>앱은 Google의 Gemini(Firebase AI Logic)를 아래 기능에만 써요.</p>
+<table>
+  <tr><th>기능</th><th>Google에 보내는 내용</th></tr>
+  <tr><td>성경 구절 불러오기</td><td>입력한 성경 구절 위치(예: 요한복음 3:16)와 번역본 이름</td></tr>
+  <tr><td>설교노트 삽화 만들기<br>(보상형 광고 시청 후)</td><td>불러온 성경 본문. <strong>사용자가 쓴 설교 내용은 보내지 않아요.</strong></td></tr>
+  <tr><td>주간 기도제목 기한 찾기</td><td><strong>주간 기도제목으로 저장한 문장 전체</strong>. 문장 속 날짜(예: "금요일 면접")를 찾아 알림 날짜를 정하는 데만 써요.</td></tr>
+</table>
+<p>Gemini의 처리는 <a href="https://ai.google.dev/gemini-api/terms?hl=ko">Gemini API 약관</a>과 Google 개인정보처리방침을 따라요. 주간 기도제목을 AI에 보내고 싶지 않으면 기도제목을 주간 대신 연간·장기로 저장해 주세요.</p>
+
+<h2>4. 광고와 분석</h2>
+<p>앱은 무료로 제공되며 광고로 운영돼요.</p>
+<table>
+  <tr><th>서비스</th><th>전송되는 정보</th><th>목적</th></tr>
+  <tr>
+    <td>Google AdMob<br>(광고)</td>
+    <td>광고 ID 등 기기 식별자, IP 주소(대략적인 위치 추정), 광고·앱 이용 기록(앱 실행, 화면 터치, 광고 시청), 진단 정보</td>
+    <td>광고 표시(배너·전면·보상형·앱 시작 광고), 맞춤형 광고(동의한 경우), 광고 성과 측정, 부정 클릭 방지</td>
+  </tr>
+  <tr>
+    <td>Google Analytics for Firebase<br>(이용 통계)</td>
+    <td>앱 인스턴스 ID, 광고 ID, 대략적인 위치(IP 기반), 앱 이용 기록(화면 조회, 세션, 아래 이벤트)</td>
+    <td>이용 통계 분석, 앱 개선</td>
+  </tr>
+  <tr>
+    <td>Meta(Facebook) SDK<br>(광고 성과 측정)</td>
+    <td>광고 ID(iOS는 추적을 허용한 경우), 앱 설치·실행 같은 자동 앱 이벤트, 아래 이벤트 중 일부</td>
+    <td>Meta 광고로 앱을 알리고 그 성과 측정</td>
+  </tr>
+  <tr>
+    <td>Firebase Remote Config<br>(원격 설정)</td>
+    <td>국가·언어·시간대, 운영체제 버전, 앱 버전</td>
+    <td>광고 표시 여부, 업데이트 안내 등 앱 설정을 원격으로 조정</td>
+  </tr>
+</table>
+<p>이용 통계로 보내는 앱 이벤트는 다음과 같아요: 로그인 방법(Google/Apple), 설교노트 작성(<strong>노트 제목 포함</strong>)·수정·삭제, 결단 항목 체크, 묵상·기도제목·감사일기 작성(감사 항목 개수), AI 성경 기능 사용, 로그아웃·탈퇴·후원 버튼 누름. 이 중 설교노트·묵상·기도제목 작성과 회원가입 이벤트는 Meta에도 보내요. <strong>설교노트 제목을 빼고는 기록 내용(본문, 감사·묵상·기도 내용)을 보내지 않아요.</strong></p>
+<p>Google의 정보 처리는 <a href="https://policies.google.com/privacy?hl=ko">Google 개인정보처리방침</a>과 <a href="https://policies.google.com/technologies/partner-sites?hl=ko">파트너 앱 정보 사용 방식</a>을, Meta의 처리는 <a href="https://www.facebook.com/privacy/policy/">Meta 개인정보처리방침</a>을 따라요.</p>
+
+<h2>5. 추적과 광고 선택</h2>
+<ul>
+  <li>iOS에서는 앱을 처음 열 때 "추적 허용" 여부를 물어요. 허용하지 않으면 광고 ID가 Google·Meta에 전달되지 않으며, 설정 → 개인정보 보호 및 보안 → 추적에서 언제든 바꿀 수 있어요.</li>
+  <li>Android에서는 설정 → 개인정보 보호 → 광고에서 광고 ID를 재설정하거나 삭제할 수 있어요.</li>
+</ul>
+
+<h2>6. 권한과 알림</h2>
+<ul>
+  <li><strong>카메라·사진:</strong> 프로필 사진을 찍거나 고를 때, 설교 필기 사진을 첨부할 때만 써요. 고른 사진만 업로드하고 다른 사진은 읽지 않아요.</li>
+  <li><strong>사진 저장:</strong> AI 삽화의 "저장"을 누를 때만 사진첩에 저장해요.</li>
+  <li><strong>알림:</strong> 감사일기 리마인더, 결단 항목 리마인더, 주간 기도제목 알림을 휴대폰 안에서 예약해요. 이 알림에는 결단·기도제목 내용이 보일 수 있으니, 원하지 않으면 휴대폰 설정에서 알림 미리보기를 꺼 주세요. 앱 공지 같은 푸시 알림은 Firebase Cloud Messaging으로 보내요.</li>
+</ul>
+<p>권한을 허용하지 않아도 해당 기능만 빼고 앱을 쓸 수 있어요.</p>
+
+<h2>7. 보관과 삭제</h2>
+<ul>
+  <li>기록은 회원 탈퇴 전까지 보관해요. 앱에서 지운 설교노트·묵상노트·기도제목은 휴지통으로 옮겨져 복원할 수 있고, 감사일기는 바로 지워져요.</li>
+  <li><strong>회원 탈퇴:</strong> 앱의 계정 → 회원 탈퇴에서 할 수 있어요. 탈퇴하면 계정이 바로 비활성화되고, 30일 안에 계정 정보·모든 기록·업로드한 이미지를 서버에서 완전히 지워요. 지운 정보는 복구할 수 없어요.</li>
+  <li>앱을 쓸 수 없거나 앱 밖에서 삭제를 원하면 로그인한 계정의 이메일로 8번 연락처에 요청해 주세요. 본인 확인 후 30일 안에 처리해요.</li>
+  <li>Google·Meta에 전송된 광고·분석 정보의 보관 기간은 각 회사의 정책을 따라요.</li>
+</ul>
+
+<h2>8. 처리 위탁과 국외 이전</h2>
+<p>앱은 아래 업체에 정보 처리를 맡기며, 정보는 해외 서버에서 처리될 수 있어요. 앱을 쓰는 동안 네트워크로 전송돼요.</p>
+<table>
+  <tr><th>업체(국가)</th><th>맡기는 일</th><th>정보</th><th>보유 기간</th></tr>
+  <tr><td>Google LLC<br>(미국 등)</td><td>로그인, 기록 저장, AI 기능, 푸시, 광고, 이용 통계</td><td>1번 표의 정보</td><td>탈퇴 후 30일 / 광고·분석은 Google 정책</td></tr>
+  <tr><td>Apple Inc.<br>(미국)</td><td>Apple 로그인</td><td>Apple 계정 ID, 이메일, 이름</td><td>Apple 정책</td></tr>
+  <tr><td>Meta Platforms, Inc.<br>(미국)</td><td>광고 성과 측정</td><td>4번 표의 정보</td><td>Meta 정책</td></tr>
+</table>
+<p>위의 경우 말고는 개인정보를 다른 사람에게 팔거나 제공하지 않아요. 법령에 따라 수사기관 등이 요청하는 경우는 예외예요.</p>
+
+<h2>9. 아동</h2>
+<p>이 앱은 만 14세 미만 아동을 대상으로 하지 않으며, 만 14세 미만임을 알게 되면 그 계정의 정보를 지워요.</p>
+
+<h2>10. 이용자의 권리와 문의</h2>
+<p>이용자는 언제든 자신의 정보를 열람·수정·삭제하고 처리 정지를 요청할 수 있어요. 기록과 닉네임·프로필 사진은 앱에서 바로 고칠 수 있고, 그 밖의 요청은 아래로 보내 주세요.</p>
+<ul>
+  <li>개인정보 보호책임자: 최재성 (AppsVerything)</li>
+  <li>문의: <a href="mailto:contact@appsverything.com">contact@appsverything.com</a></li>
+</ul>
+<p>개인정보 침해 신고·상담은 개인정보침해신고센터(국번 없이 118, privacy.kisa.or.kr)나 개인정보분쟁조정위원회(1833-6972, www.kopico.go.kr)에도 할 수 있어요.</p>
+
+<h2>11. 변경</h2>
+<p>이 방침이 바뀌면 이 페이지에 바뀐 내용과 시행일을 알려 드려요. 이전 방침(2026년 2월 26일 시행)은 이 방침으로 대체돼요.</p>
+</body>
+</html>
