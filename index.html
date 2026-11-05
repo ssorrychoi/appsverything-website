@@ -3,337 +3,294 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AppsVerything</title>
-<meta name="description" content="AppsVerything에서 AI와 함께 만드는 모바일 앱을 소개해요.">
-<meta name="theme-color" content="#07060f">
+<title>최재성, AI 앱 개발자</title>
+<meta name="description" content="AI 앱 개발자 최재성의 이력서예요. LLM 기능 개발, AI 에이전트로 출시한 앱 7개, Flutter 6년 경력.">
+<meta name="theme-color" content="#120e1c">
 <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&family=Onest:wght@400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-  :root {
-    color-scheme: dark;
-    --bg: #07060f; --surface: rgba(255,255,255,.04); --surface-2: rgba(255,255,255,.07);
-    --text: #ecebff; --muted: #9a98b8; --line: rgba(255,255,255,.09);
-    --v: #8b5cf6; --b: #3b82f6; --c: #22d3ee; --p: #ec4899; --ok: #34d399;
-    --grad: linear-gradient(110deg, #a78bfa 0%, #60a5fa 35%, #22d3ee 60%, #f472b6 100%);
-    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  }
-  * { box-sizing: border-box; }
-  html { background: var(--bg); }
-  body {
-    margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden;
-    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-    word-break: keep-all; -webkit-font-smoothing: antialiased;
-  }
-  /* 배경: 그리드 + 떠다니는 그라디언트 오브 */
-  .bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-  .bg::before {
-    content: ""; position: absolute; inset: 0;
-    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-  }
-  .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; animation: drift 18s ease-in-out infinite alternate; }
-  .orb.o1 { width: 520px; height: 520px; background: var(--v); top: -180px; left: -120px; }
-  .orb.o2 { width: 460px; height: 460px; background: var(--b); top: -120px; right: -160px; animation-delay: -6s; }
-  .orb.o3 { width: 380px; height: 380px; background: var(--p); top: 420px; left: 40%; opacity: .25; animation-delay: -12s; }
-  @keyframes drift { to { transform: translate(60px, 80px) scale(1.15); } }
+/* Hallmark · shape: Manifesto (draw df2be7) · genre: modern-minimal · theme: Ultraviolet (deal 3/3, seed korean-mobile-developer-resume-53d9·aa3b2745·2026-11-05·r0) · redesign: full · job: hire
+ * hero: Banner · nav: edge-aligned · footer: letter close · imagery: none (the app icons live on apps/, by request) · signature: 이름과 AI 앱 개발자를 가장 크게, 바로 아래 실서비스 LLM 기능이 첫 줄 · ultraviolet: night
+ * axes: dark/geometric-sans/cool · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 · weakest: P, a resume argues little; the hero states the shift from six years of Flutter to building with AI and every section proves it */
+/* Hallmark · reworded "// 01 지금 하는 일 ps aux | grep ai" and the other ordinal section heads to plain heads (지금 하는 일, 일해 온 곳, 손에 익은 도구, 배운 곳과 복무) · 54 and 63 name the ordinal and command labels */
+/* Hallmark · finish-review: subagent · 7 findings · signature moved into the hero, skills merged into the career band as a table of uses, close set on paper-2, row columns widened, h1 balance dropped, phone icons wrap 4 + 3 */
+/* Hallmark · casing kept as written · an AI developer resume names LLM, ChatGPT and GitHub, and lowercasing them reads as a typo to a recruiter; Ultraviolet's lowercase rule is set aside on the user's goal */
+/* Hallmark · dismissed 23 · the accent rule in base.css paints [data-slot] photos, and this resume has no slot */
+@import url("./tokens.css");
+@import url("./base.css");
 
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-  .mono { font-family: var(--mono); }
-  .dim { color: var(--muted); font-weight: 400; }
-  .grad { background: var(--grad); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 6s linear infinite; }
-  @keyframes shine { to { background-position: 200% center; } }
+/* 한글은 단어 단위로 줄바꿈 */
+body { word-break: keep-all; }
 
-  /* 상단 바 */
-  nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; gap: 12px; }
-  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; }
-  .logo .spark { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: var(--grad); color: #fff; font-size: 16px; box-shadow: 0 0 24px rgba(139,92,246,.6); }
-  .pill {
-    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-family: var(--mono);
-    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted);
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  }
-  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); animation: pulse 2s ease-in-out infinite; }
-  @keyframes pulse { 50% { opacity: .35; } }
+/* 12단 그리드: 모든 섹션이 같은 왼쪽 선에 맞춘다 */
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); }
+section { padding-block: var(--section-gap) 0; }
+.head { grid-column: 1 / 8; margin-bottom: var(--space-2xl); }
+.head .lead { margin-top: var(--space-md); color: var(--color-ink-2); }
+h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-display); letter-spacing: -0.01em; }
+.muted { color: var(--color-muted); }
 
-  /* 히어로 */
-  header { padding: 56px 0 24px; text-align: center; }
-  header .pill { color: var(--text); }
-  header .pill b { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  h1 { font-size: clamp(34px, 7vw, 64px); line-height: 1.15; letter-spacing: -.03em; margin: 22px 0 16px; font-weight: 800; }
-  .lead { color: var(--muted); font-size: clamp(16px, 2.4vw, 18px); margin: 0 auto; max-width: 560px; }
+/* 링크와 버튼 */
+.link { color: var(--color-ink); text-decoration-color: var(--color-rule-2); text-decoration-thickness: 1px; padding-block: var(--space-2xs); transition: color var(--dur-micro) var(--ease-out), text-decoration-color var(--dur-micro) var(--ease-out); }
+.link:hover { color: var(--color-ink); text-decoration-color: var(--color-accent); }
+.link:active { color: var(--color-ink-2); }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--space-lg); border-radius: var(--radius-pill); font: 500 var(--text-md)/1 var(--font-display); text-decoration: none; white-space: nowrap; transition: background-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.btn:active { transform: translateY(1px); }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); }
+.btn--primary:hover { background: var(--color-accent-deep); }
+.btn--secondary { color: var(--color-ink); box-shadow: inset 0 0 0 1.5px var(--color-ink); }
+.btn--secondary:hover { background: var(--color-paper-2); }
+.pills { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; }
+.pill { display: inline-flex; align-items: center; padding: var(--space-2xs) var(--space-sm); border-radius: var(--radius-pill); box-shadow: inset 0 0 0 1.5px var(--color-rule-2); font: 500 var(--text-sm)/1.4 var(--font-display); color: var(--color-ink-2); }
 
-  /* 프롬프트 터미널 */
-  .term {
-    max-width: 640px; margin: 40px auto 0; text-align: left; border-radius: 16px; position: relative;
-    background: rgba(13,12,28,.75); border: 1px solid var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 0 0 1px rgba(139,92,246,.15), 0 30px 80px -20px rgba(59,130,246,.35);
-  }
-  .term-bar { display: flex; align-items: center; gap: 6px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
-  .term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3950; }
-  .term-bar span { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
-  .term-body { padding: 16px 18px 18px; font-family: var(--mono); font-size: 13.5px; line-height: 1.8; min-height: 132px; overflow-wrap: anywhere; }
-  .term-body .u { color: var(--c); }
-  .term-body .ok { color: var(--ok); }
-  .term-body .think { color: var(--muted); }
-  .caret { display: inline-block; width: 8px; height: 1.05em; vertical-align: -2px; background: var(--c); animation: blink 1s steps(1) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
+/* 상단 바: 이름과 목적지만 양끝에 */
+.nav { padding-block: var(--space-lg); }
+.nav .container { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); }
+.wordmark { font: 500 var(--text-xl)/1 var(--font-display); letter-spacing: var(--tracking-display); text-decoration: none; color: var(--color-ink); }
+.nav ul { display: flex; gap: var(--space-lg); margin: 0; padding: 0; list-style: none; }
+.nav a:not(.wordmark) { font: 500 var(--text-md)/1 var(--font-display); text-decoration: none; color: var(--color-ink-2); padding-block: var(--space-xs); }
+.nav a:not(.wordmark):hover { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); }
 
-  .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .stats .pill b { color: var(--text); font-weight: 600; }
+/* 첫 화면: 선언 한 줄, 한 문장, 두 동작 */
+.hero { padding-block: var(--space-2xl); }
+.hero h1 { grid-column: 1 / 11; max-width: 16ch; text-wrap: wrap; }
+.hero .lead { grid-column: 1 / 8; margin-top: var(--space-lg); color: var(--color-ink-2); }
+.actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-xl); }
 
-  /* 섹션 & 카드 */
-  .sec { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; font-size: 22px; margin: 72px 0 18px; letter-spacing: -.02em; }
-  .sec .mono:first-child { font-size: 13px; color: var(--v); }
-  .sec .dim { font-size: 13px; margin-left: auto; }
-  .apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
-  .app {
-    position: relative; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px;
-    background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--line);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    transition: transform .25s ease, box-shadow .25s ease;
-  }
-  /* 호버 시 그라디언트 테두리 */
-  .app::before {
-    content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; background: var(--grad);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .25s ease; pointer-events: none;
-  }
-  .app:hover { transform: translateY(-4px); box-shadow: 0 20px 60px -20px rgba(139,92,246,.55); }
-  .app:hover::before { opacity: 1; }
-  .app-head { display: flex; gap: 14px; align-items: center; padding-right: 84px; }
-  .app-head img { width: 60px; height: 60px; border-radius: 15px; flex: none; box-shadow: 0 0 0 1px var(--line), 0 8px 24px rgba(0,0,0,.4); }
-  .app h3 { margin: 0; font-size: 18px; letter-spacing: -.01em; }
-  .app .tag { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; font-family: var(--mono); }
-  .app p { margin: 0; color: #cfcde6; font-size: 15px; }
-  .app .status { position: absolute; top: 18px; right: 18px; font-size: 10.5px; padding: 4px 9px; }
-  .app .status.live { color: var(--ok); border-color: rgba(52,211,153,.3); }
-  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-  .links a, .links span {
-    font-size: 13.5px; padding: 8px 14px; border-radius: 10px; text-decoration: none;
-    border: 1px solid var(--line); color: var(--text); background: var(--surface); transition: background .2s, border-color .2s;
-  }
-  .links a:hover { background: var(--surface-2); border-color: rgba(167,139,250,.5); }
-  .links a.primary { background: linear-gradient(110deg, var(--v), var(--b)); border-color: transparent; color: #fff; font-weight: 600; box-shadow: 0 6px 20px -6px rgba(139,92,246,.7); }
-  .links a.primary:hover { filter: brightness(1.12); }
-  .links span { color: var(--muted); border-style: dashed; background: transparent; font-family: var(--mono); font-size: 12px; display: inline-flex; align-items: center; }
+/* 지금 하는 일: 머리줄 아래 세 줄 */
+#now { padding-top: var(--space-lg); }
+.rows { margin: 0; padding: 0; list-style: none; border-bottom: var(--rule-hair) solid var(--color-rule); }
+.row { padding-block: var(--space-xl); border-top: var(--rule-hair) solid var(--color-rule); row-gap: var(--space-md); }
+.row__title { grid-column: 1 / 4; }
+.row__title p { margin-top: var(--space-xs); }
+.row__body { grid-column: 4 / 10; display: grid; gap: var(--space-md); align-content: start; }
+.row__links { grid-column: 10 / 13; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
 
-  footer { margin: 96px 0 0; padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-  footer p { margin: 4px 0; }
-  footer a { color: var(--text); }
 
-  @media (max-width: 560px) {
-    nav .pill { display: none; }
-    header { padding-top: 32px; }
-    .sec .dim { margin-left: 0; width: 100%; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .orb, .grad, .dot, .caret { animation: none; }
-    .app, .app::before { transition: none; }
-  }
+/* 경력: 종이색이 바뀌는 띠 */
+.band { background: var(--color-paper-2); color: var(--color-ink); padding-block: var(--section-gap-s); margin-top: var(--section-gap-l); }
+#career, #edu, #skills { scroll-margin-top: var(--space-lg); }
+.entry { padding-block: var(--space-xl); border-top: var(--rule-hair) solid var(--color-rule); row-gap: var(--space-md); }
+.entry__when { grid-column: 1 / 4; font: 300 var(--text-lg)/1.3 var(--font-display); font-variant-numeric: tabular-nums; }
+.entry__when small { display: block; margin-top: var(--space-2xs); font: 400 var(--text-sm)/1.4 var(--font-body); color: var(--color-muted); }
+.entry__main { grid-column: 4 / 13; display: grid; gap: var(--space-md); }
+.entry__main > p { color: var(--color-ink-2); }
+.projs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-columns); }
+.proj { display: grid; align-content: start; gap: var(--space-sm); padding-top: var(--space-md); border-top: var(--rule-hair) solid var(--color-rule); }
+.proj h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2xs) var(--space-sm); }
+.proj h4 span { font: 300 var(--text-md)/1 var(--font-display); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.ticks { margin: 0; padding-left: var(--space-lg); color: var(--color-ink-2); display: grid; gap: var(--space-2xs); }
+
+/* 도구: 쓰임새 표 */
+.head--sub { margin-top: var(--section-gap-s); }
+.uses { margin: 0; border-bottom: var(--rule-hair) solid var(--color-rule); }
+.uses > div { padding-block: var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule); align-items: center; row-gap: var(--space-sm); }
+.uses dt { grid-column: 1 / 4; font: var(--display-weight) var(--text-title)/1.2 var(--font-display); letter-spacing: -0.01em; }
+.uses dd { grid-column: 4 / 13; margin: 0; }
+
+/* 학력·교육·병역 */
+.entry__detail { grid-column: 9 / 13; }
+#edu .entry__main { grid-column: 4 / 9; align-content: start; }
+
+/* 맺음: 편지처럼 */
+.close { background: var(--color-paper-2); color: var(--color-ink); margin-top: var(--section-gap); padding-block: var(--section-gap-s) var(--space-3xl); }
+.close .statement { grid-column: 1 / 11; font: var(--display-weight) var(--text-display-s)/1.05 var(--font-display); letter-spacing: var(--tracking-display); max-width: 18ch; text-wrap: balance; }
+.contact { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-columns); margin: var(--space-2xl) 0 0; padding-top: var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule); }
+.contact dt { font-size: var(--text-sm); color: var(--color-muted); }
+.contact dd { margin: var(--space-2xs) 0 0; overflow-wrap: anywhere; }
+.signoff { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-md); margin-top: var(--space-2xl); color: var(--color-muted); font-size: var(--text-sm); }
+.signoff strong { font: 500 var(--text-lg)/1 var(--font-display); color: var(--color-ink); }
+
+@media (max-width: 75rem) { .contact { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 60rem) {
+  .projs { grid-template-columns: minmax(0, 1fr); }
+  .head, .hero h1, .hero .lead, .row__title, .row__body, .row__links, .entry__when, .entry__main, #edu .entry__main, .entry__detail, .uses dt, .uses dd, .close .statement { grid-column: 1 / -1; }
+  .row__links { flex-direction: row; flex-wrap: wrap; gap: var(--space-md); }
+  .nav ul { display: none; }
+}
+@media (max-width: 40rem) { .contact { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
-<div class="bg" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
-<div class="wrap">
-  <nav>
-    <div class="logo"><span class="spark">✦</span>AppsVerything</div>
-    <span class="pill"><span class="dot"></span>개발자 1명 + AI 에이전트 · 작업 중</span>
-  </nav>
+<header class="nav">
+  <div class="container">
+    <a class="wordmark" href="./" aria-label="최재성, 처음으로">최재성</a>
+    <nav aria-label="페이지 안 목차">
+      <ul>
+        <li><a href="#now">AI 경험</a></li>
+        <li><a href="#career">경력</a></li>
+        <li><a href="#skills">도구</a></li>
+        <li><a href="apps/">앱 목록</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <header>
-    <span class="pill">✦ <b>AI와 함께</b> 만드는 1인 앱 스튜디오</span>
-    <h1>아이디어는 사람이,<br><span class="grad">코드는 AI가</span></h1>
-    <p class="lead">생활하다 불편했던 순간을 프롬프트 한 줄로 적어요. 그다음 설계, 코딩, 테스트까지 AI와 함께 해서 필요한 기능 하나만 담은 가벼운 앱으로 내놓아요.</p>
-
-    <div class="term" role="img" aria-label="AI에게 앱을 만들어 달라고 요청하는 터미널 연출">
-      <div class="term-bar"><i></i><i></i><i></i><span>~/appsverything — prompt</span></div>
-      <div class="term-body" id="term"><span class="u">❯</span> <span class="caret"></span></div>
+<main>
+  <section class="hero">
+    <div class="container grid">
+      <h1>최재성<br>AI 앱 개발자</h1>
+      <p class="lead">코치 30명이 쓴 LLM 기능을 만들고, AI 에이전트로 앱 7개를 출시했어요.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="mailto:djaeseong.choi@gmail.com">메일 보내기</a>
+        <a class="btn btn--secondary" href="https://github.com/ssorrychoi" target="_blank" rel="noopener">GitHub 보기</a>
+      </div>
     </div>
+  </section>
 
-    <div class="stats">
-      <span class="pill">만든 앱 <b id="count">7</b></span>
-      <span class="pill">출시 <b id="live">7</b></span>
-      <span class="pill">사람 <b>1</b></span>
-      <span class="pill">프롬프트 <b>∞</b></span>
+  <section id="now">
+    <div class="container">
+      <ol class="rows">
+        <li class="row grid">
+          <div class="row__title"><h2 class="visually-hidden">AI 경험</h2><h3>서비스에 LLM 기능 넣기</h3><p class="muted">스프린트 코치용 앱, 코치 30명 사용</p></div>
+          <div class="row__body">
+            <p>회원이 기록한 식단으로 LLM이 피드백 초안을 쓰고, 코치가 고치거나 다시 생성해 보내는 기능을 만들었어요.</p>
+            <ul class="pills"><li class="pill">LLM</li><li class="pill">ChatGPT</li><li class="pill">Claude</li><li class="pill">Gemini</li><li class="pill">Flutter</li></ul>
+          </div>
+          <div class="row__links"><a class="link" href="#career">경력에서 자세히 보기</a></div>
+        </li>
+        <li class="row grid">
+          <div class="row__title"><h3>AI 에이전트로 앱 출시</h3><p class="muted">1인 개발, 앱 7개</p></div>
+          <div class="row__body">
+            <p>Claude Code와 Codex로 설계부터 출시까지 혼자 진행해 App Store와 Google Play에 냈어요.</p>
+            <ul class="pills"><li class="pill">Claude Code</li><li class="pill">Codex</li><li class="pill">Flutter</li></ul>
+          </div>
+          <div class="row__links"><a class="btn btn--secondary" href="apps/">출시한 앱 보기</a></div>
+        </li>
+        <li class="row grid">
+          <div class="row__title"><h3>생성형 AI 영상 제작</h3><p class="muted">유튜브 채널 2개</p></div>
+          <div class="row__body">
+            <p>기획, 대본, 영상 생성, 편집을 AI 도구로 이어 채널을 운영해요.</p>
+            <ul class="pills"><li class="pill">Claude</li><li class="pill">Codex</li><li class="pill">fal</li><li class="pill">Vrew</li></ul>
+          </div>
+          <div class="row__links">
+            <a class="link" href="https://www.youtube.com/@jeonyeok-maru" target="_blank" rel="noopener">저녁 마루</a>
+            <a class="link" href="https://www.youtube.com/@algorithm_grace" target="_blank" rel="noopener">알고리즘의은혜</a>
+          </div>
+        </li>
+        <li class="row grid">
+          <div class="row__title"><h3>생성형 AI 마케팅</h3><p class="muted">필라테스샵 블로그 2개</p></div>
+          <div class="row__body">
+            <p>블로그 글과 인스타그램 콘텐츠를 생성형 AI로 기획하고 만들어요. 1,000시간 과정도 수료했어요.</p>
+          </div>
+          <div class="row__links">
+            <a class="link" href="https://blog.naver.com/pilates_3" target="_blank" rel="noopener">필라테스삼 블로그</a>
+            <a class="link" href="https://blog.naver.com/barrex" target="_blank" rel="noopener">바레엑스필라테스 블로그</a>
+          </div>
+        </li>
+      </ol>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <h2 class="sec"><span class="mono">// 01</span> 앱 <span class="mono dim">await ai.build("생활 도구")</span></h2>
-    <div class="apps">
-      <article class="app">
-        <div class="app-head">
-          <img src="images/liful.png" alt="라이풀 아이콘">
-          <div>
-            <h3>라이풀</h3>
-            <p class="tag">설교노트 · 감사 일기</p>
-          </div>
-        </div>
-        <p>설교 기록부터 결단, 주중의 실천까지 이어주는 설교노트예요.</p>
-        <div class="links">
-          <a class="primary" href="https://apps.apple.com/kr/app/id6757371988" target="_blank" rel="noopener">App Store</a>
-          <a class="primary" href="https://play.google.com/store/apps/details?id=com.ssorrychoi.liful" target="_blank" rel="noopener">Google Play</a>
-          <a href="privacy/liful.html">개인정보처리방침</a>
+
+  <section id="career" class="band">
+    <div class="container">
+      <div class="grid"><div class="head"><h2>일해 온 곳</h2></div></div>
+      <article class="entry grid">
+        <p class="entry__when"><time datetime="2026-10">2026.10</time> ~ 현재</p>
+        <div class="entry__main">
+          <h3>AppsVerything</h3>
+          <p>1인 AI 앱 스튜디오 운영</p>
+          <ul class="ticks">
+            <li>Claude Code와 Codex로 앱 7개를 설계하고 개발해 App Store와 Google Play에 출시</li>
+            <li>유튜브 채널 2개 운영, 필라테스샵 블로그와 인스타그램 콘텐츠 제작</li>
+          </ul>
         </div>
       </article>
-
-      <article class="app">
-        <div class="app-head">
-          <img src="images/sasang-water.png" alt="아맞다물 아이콘">
-          <div>
-            <h3>아맞다물</h3>
-            <p class="tag">계절 8체질 테스트 · 물 기록</p>
+      <article class="entry grid">
+        <p class="entry__when"><time datetime="2021-06">2021.06</time> ~ <time datetime="2025-12">2025.12</time><small>4년 7개월</small></p>
+        <div class="entry__main">
+          <h3>(주)스프린트</h3>
+          <p>Flutter 모바일 앱 개발</p>
+          <div class="projs">
+          <div class="proj">
+            <h4>스프린트 코치용 앱 출시와 기능 개발 <span>2025.04부터</span></h4>
+            <ul class="ticks">
+              <li>회원 앱에 기록된 식단의 칼로리, 양, 음식 정보로 LLM이 피드백 초안을 쓰는 기능 개발</li>
+              <li>ChatGPT, Claude, Gemini 중 코치가 원하는 모델을 골라 쓰도록 설계</li>
+              <li>초안은 다시 생성하거나 코치가 고친 뒤 전송해, 최종 확인은 사람이 하도록 구성</li>
+              <li>서버를 거쳐 호출해 코치의 요청 내용을 내부에서 확인 가능</li>
+              <li>코치 약 30명 사용, 매번 직접 쓰던 피드백 작성 시간이 줄었다는 반응</li>
+              <li>회원용 앱의 컴포넌트를 모노레포로 재사용해 새 앱 출시</li>
+            </ul>
+            <ul class="pills"><li class="pill">Riverpod</li><li class="pill">go_router</li><li class="pill">Monorepo</li><li class="pill">LLM</li></ul>
           </div>
-        </div>
-        <p>17문항 체질 테스트로 나에게 맞는 물 마시는 방법을 알아보고, 매일 마신 물을 기록해요.</p>
-        <div class="links">
-          <a class="primary" href="https://apps.apple.com/kr/app/id6825349347" target="_blank" rel="noopener">App Store</a>
-          <span>Google Play 준비 중</span>
-          <a href="privacy/sasang-water.html">개인정보처리방침</a>
+          <div class="proj">
+            <h4>스프린트 회원용 앱 전면 재개발과 운영 <span>2022.01부터</span></h4>
+            <ul class="ticks">
+              <li>기존 앱을 처음부터 다시 만들어 6개월 만에 인앱결제 구독 모델과 함께 출시</li>
+              <li>Health Connect, Apple Health 연동</li>
+              <li>공공데이터 바코드 API로 음식 정보를 불러오는 기능 개발</li>
+            </ul>
+            <ul class="pills"><li class="pill">GetX</li><li class="pill">인앱결제</li><li class="pill">Health Connect</li><li class="pill">Apple Health</li></ul>
+          </div>
+          </div>
         </div>
       </article>
-
-      <article class="app">
-        <div class="app-head">
-          <img src="images/couple-pregnancy.png" alt="배부른 부부 아이콘">
-          <div>
-            <h3>배부른 부부</h3>
-            <p class="tag">임신 주수 · 출산 지원금 체크리스트</p>
-          </div>
-        </div>
-        <p>부부가 각자 폰에서 함께 쓰는 임신 앱이에요. 아내 컨디션을 남편 폰에 바로 알려 주고, 주수에 맞춰 챙길 신청을 같이 체크해요.</p>
-        <div class="links">
-          <a class="primary" href="https://apps.apple.com/kr/app/id6825606724" target="_blank" rel="noopener">App Store</a>
-          <a class="primary" href="https://play.google.com/store/apps/details?id=com.ssorrychoi.couple_pregnancy" target="_blank" rel="noopener">Google Play</a>
-          <a href="privacy/couple-pregnancy.html">개인정보처리방침</a>
+      <article class="entry grid">
+        <p class="entry__when"><time datetime="2019-12">2019.12</time> ~ <time datetime="2021-05">2021.05</time><small>1년 6개월</small></p>
+        <div class="entry__main">
+          <h3>브레인콜라</h3>
+          <p>Flutter 모바일 앱 개발</p>
+          <ul class="ticks">
+            <li>자체 앱 <b>책방잉크</b>, <b>myfan.ai for 조아라</b>를 Flutter로 유지보수</li>
+            <li>2020.06부터 12월까지 웹소설 플랫폼 Joara와 협업해 <b>Joara 해외판</b> 앱 개발</li>
+          </ul>
         </div>
       </article>
+      <div class="grid" id="skills"><div class="head head--sub"><h2>손에 익은 도구</h2></div></div>
+      <dl class="uses">
+        <div class="grid"><dt>LLM</dt><dd><ul class="pills"><li class="pill">ChatGPT</li><li class="pill">Claude</li><li class="pill">Gemini</li></ul></dd></div>
+        <div class="grid"><dt>AI 코딩 에이전트</dt><dd><ul class="pills"><li class="pill">Claude Code</li><li class="pill">Codex</li></ul></dd></div>
+        <div class="grid"><dt>생성형 미디어</dt><dd><ul class="pills"><li class="pill">fal</li><li class="pill">Vrew</li></ul></dd></div>
+        <div class="grid"><dt>앱 개발</dt><dd><ul class="pills"><li class="pill">Flutter</li><li class="pill">Dart</li><li class="pill">Riverpod</li><li class="pill">GetX</li><li class="pill">go_router</li><li class="pill">Monorepo</li><li class="pill">인앱결제</li></ul></dd></div>
+        <div class="grid"><dt>콘텐츠 채널</dt><dd><ul class="pills"><li class="pill">YouTube</li><li class="pill">네이버 블로그</li><li class="pill">인스타그램</li></ul></dd></div>
+      </dl>
+    </div>
+  </section>
 
-      <article class="app">
-        <div class="app-head">
-          <img src="images/fm-jochuck.png" alt="FM조축 아이콘">
-          <div>
-            <h3>FM조축</h3>
-            <p class="tag">조기축구 팀 관리 · 경기 기록</p>
-          </div>
-        </div>
-        <p>경기 공지와 참석 투표, 팀 나누기, 내 스탯 기록까지 조기축구 팀을 한곳에서 관리해요.</p>
-        <div class="links">
-          <a class="primary" href="https://apps.apple.com/kr/app/id6760709307" target="_blank" rel="noopener">App Store</a>
-          <span>Google Play 준비 중</span>
-        </div>
+
+  <section id="edu">
+    <div class="container">
+      <div class="grid"><div class="head"><h2>배운 곳과 복무</h2></div></div>
+      <article class="entry grid">
+        <p class="entry__when"><time datetime="2026-04">2026.04</time> ~ <time datetime="2026-09">2026.09</time><small>100일, 1,000시간</small></p>
+        <div class="entry__main"><h3>생성형 AI 기반 디지털 마케팅 전문가 양성 과정</h3><p>팀스파르타</p></div>
+        <ul class="ticks entry__detail"><li>광고 콘텐츠 기획과 제작</li><li>데이터 기반 마케팅</li></ul>
+      </article>
+      <article class="entry grid">
+        <p class="entry__when"><time datetime="2019-04">2019.04</time> ~ <time datetime="2019-11">2019.11</time><small>1,184시간</small></p>
+        <div class="entry__main"><h3>시큐어코딩 기반 블록체인 개발</h3><p>멀티캠퍼스</p></div>
+        <ul class="ticks entry__detail"><li>리눅스, 네트워크 보안, Docker</li><li>HTML/CSS, JavaScript, Node.js, MySQL, MongoDB</li><li>Go Ethereum, Solidity, Hyperledger</li></ul>
+      </article>
+      <article class="entry grid">
+        <p class="entry__when">학력</p>
+        <div class="entry__main"><h3>호서대학교</h3><p>컴퓨터소프트웨어학</p></div>
+      </article>
+      <article class="entry grid">
+        <p class="entry__when"><time datetime="2012-08">2012.08</time> ~ <time datetime="2014-05">2014.05</time></p>
+        <div class="entry__main"><h3>병역</h3><p>군필, 육군 병장 제대</p></div>
       </article>
     </div>
+  </section>
+</main>
 
-    <h2 class="sec"><span class="mono">// 02</span> 게임 <span class="mono dim">await ai.build("가벼운 게임")</span></h2>
-    <div class="apps">
-      <article class="app">
-        <div class="app-head">
-          <img src="images/minesweeper.png" alt="지뢰찾기 아이콘">
-          <div>
-            <h3>지뢰찾기</h3>
-            <p class="tag">퍼즐</p>
-          </div>
-        </div>
-        <p>숫자를 힌트로 지뢰를 피하는 가벼운 퍼즐 게임이에요. 첫 칸은 항상 안전해요.</p>
-        <div class="links">
-          <span>App Store 준비 중</span>
-          <a class="primary" href="https://play.google.com/store/apps/details?id=com.appsverything.minesweeper" target="_blank" rel="noopener">Google Play</a>
-          <a href="privacy/minesweeper.html">개인정보처리방침</a>
-        </div>
-      </article>
-
-      <article class="app">
-        <div class="app-head">
-          <img src="images/senior-brain.png" alt="반짝 두뇌 아이콘">
-          <div>
-            <h3>반짝 두뇌</h3>
-            <p class="tag">큰 글씨 두뇌 놀이</p>
-          </div>
-        </div>
-        <p>짝 맞추기, 계산, 순서 기억, 속담 완성을 매일 10분씩. 글씨가 커서 부모님도 혼자 할 수 있어요.</p>
-        <div class="links">
-          <span>App Store 준비 중</span>
-          <a class="primary" href="https://play.google.com/store/apps/details?id=com.ssorrychoi.senior_brain" target="_blank" rel="noopener">Google Play</a>
-          <a href="privacy/senior-brain.html">개인정보처리방침</a>
-        </div>
-      </article>
-
-      <article class="app">
-        <div class="app-head">
-          <img src="images/daily-saint.png" alt="Santo de Hoy 아이콘">
-          <div>
-            <h3>Santo de Hoy</h3>
-            <p class="tag">스페인어 · 오늘의 성인</p>
-          </div>
-        </div>
-        <p>El santo de cada día con letra grande y tarjetas de felicitación para enviar por WhatsApp.</p>
-        <div class="links">
-          <span>App Store 준비 중</span>
-          <a class="primary" href="https://play.google.com/store/apps/details?id=com.ssorrychoi.daily_saint" target="_blank" rel="noopener">Google Play</a>
-          <a href="privacy/daily-saint.html">Aviso de privacidad</a>
-        </div>
-      </article>
-    </div>
-  </main>
-
-  <footer>
-    <div>
-      <p><strong>AppsVerything</strong> <span class="mono dim">✦ 이 사이트도 AI와 함께 만들었어요</span></p>
-      <p>문의: <a href="mailto:contact@appsverything.com">contact@appsverything.com</a></p>
-    </div>
-    <p class="mono">© 2026 · 1 human × ∞ tokens</p>
-  </footer>
-</div>
-<script>
-  // 카드마다 상태 배지: 스토어 링크(a.primary)가 있으면 LIVE
-  const cards = document.querySelectorAll('.app');
-  cards.forEach((card) => {
-    const live = card.querySelector('a.primary');
-    const badge = document.createElement('span');
-    badge.className = 'pill status' + (live ? ' live' : '');
-    badge.innerHTML = live ? '<span class="dot"></span>LIVE' : '◌ 만드는 중';
-    card.appendChild(badge);
-  });
-  document.getElementById('count').textContent = cards.length;
-  document.getElementById('live').textContent = document.querySelectorAll('.app .status.live').length;
-
-  // 터미널 타이핑 연출: 카드의 앱 이름·태그로 프롬프트를 만든다
-  const term = document.getElementById('term');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const scripts = [...cards].map((card) => ({
-    prompt: `"${card.querySelector('.tag').textContent}" 앱 하나 만들어줘`,
-    name: card.querySelector('h3').textContent,
-    live: !!card.querySelector('a.primary'),
-  }));
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const line = (cls, text) => { const s = document.createElement('div'); s.className = cls; s.textContent = text; return s; };
-
-  async function run() {
-    for (let i = 0; ; i = (i + 1) % scripts.length) {
-      const { prompt, name, live } = scripts[i];
-      term.innerHTML = '<span class="u">❯</span> <span class="typed"></span><span class="caret"></span>';
-      const typed = term.querySelector('.typed');
-      if (reduce) typed.textContent = prompt;
-      else for (const ch of prompt) { typed.textContent += ch; await sleep(45 + Math.random() * 40); }
-      await sleep(400);
-      term.querySelector('.caret').remove();
-      term.append(line('think', '✦ 요구사항 정리하는 중…'));
-      await sleep(reduce ? 0 : 900);
-      term.append(line('think', '  ▸ 화면 설계 → 코드 작성 → 테스트 통과'));
-      await sleep(reduce ? 0 : 900);
-      // 출시된 앱은 완료, 아직인 앱은 진행 중으로 끝맺는다
-      term.append(live ? line('ok', `✓ ${name} 완성 · 스토어에 올라갔어요`) : line('think', `◌ ${name} 아직 다듬는 중이에요`));
-      await sleep(2600);
-    }
-  }
-  if (scripts.length) run();
-</script>
+<footer class="close">
+  <div class="container grid">
+    <p class="statement">AI 기능을 실제 앱에 넣는 일, 함께하고 싶어요.</p>
+    <dl class="contact">
+      <div><dt>이력서와 협업 문의</dt><dd><a class="link" href="mailto:djaeseong.choi@gmail.com">djaeseong.choi@gmail.com</a></dd></div>
+      <div><dt>코드</dt><dd><a class="link" href="https://github.com/ssorrychoi" target="_blank" rel="noopener">github.com/ssorrychoi</a></dd></div>
+      <div><dt>앱 문의</dt><dd><a class="link" href="mailto:contact@appsverything.com">contact@appsverything.com</a></dd></div>
+      <div><dt>출시한 앱</dt><dd><a class="link" href="apps/">AppsVerything 앱 목록</a></dd></div>
+    </dl>
+    <div class="signoff"><strong>최재성 드림</strong><span>2026 AppsVerything</span></div>
+  </div>
+</footer>
 </body>
 </html>

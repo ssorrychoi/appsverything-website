@@ -1,0 +1,27 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "shape": "Manifesto",
+  "theme": "ultraviolet",
+  "axes": "dark/geometric-sans/cool",
+  "hero": "Banner",
+  "nav": "edge-aligned",
+  "footer": "letter close",
+  "imagery": "product: 7 app icons",
+  "photos": [],
+  "entry": "index.html",
+  "sections": [
+   "hero with app icons",
+   "rows: now",
+   "band: career + table of uses",
+   "rows: education",
+   "close band"
+  ],
+  "signature": "seven shipped app icons in the hero",
+  "waived": [],
+  "prompt": "Korean mobile developer resume, AI developer feel",
+  "date": "2026-11-05"
+ }
+]
