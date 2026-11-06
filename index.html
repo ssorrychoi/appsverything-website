@@ -141,8 +141,9 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
 .hero::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(32rem circle at var(--mx, 70%) var(--my, 40%), color-mix(in oklch, var(--color-glow-1) 22%, transparent), transparent 60%); }
 
 /* 이름은 크게, 직함은 빛나는 그라데이션 글씨 */
-.hero h1 { font-size: clamp(3.5rem, 9vw, 8.5rem); line-height: .98; max-width: none; }
-.tagline.shine { display: block; margin-top: var(--space-sm); font-size: clamp(1.75rem, 4.2vw, 3.75rem); line-height: 1.15; }
+/* 이름은 작게 인사로, 브랜드 문장을 크게 */
+.hello { grid-column: 1 / -1; margin-bottom: var(--space-md); font: 400 var(--text-lg)/1.4 var(--font-body); color: var(--color-ink-2); }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); line-height: 1.1; max-width: none; }
 .shine { display: inline-block; background: linear-gradient(100deg, var(--color-glow-ink) 0%, var(--color-glow-1) 30%, var(--color-glow-2) 55%, var(--color-glow-3) 75%, var(--color-glow-ink) 100%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 7s linear infinite; }
 @keyframes shine { to { background-position: -220% 0; } }
 
@@ -230,7 +231,8 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
   <section class="hero">
     <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="container grid">
-      <h1>최재성<span class="tagline shine">혼자서도 팀처럼 만드는 개발자</span></h1>
+      <p class="hello">안녕하세요, 최재성입니다</p>
+      <h1><span class="shine">혼자서도 팀처럼<br>만드는 개발자</span></h1>
       <p class="typer"><span class="prompt" aria-hidden="true">&gt;</span>오늘의 팀원: <span class="word" data-words="Claude Code|Codex|Gemini|ChatGPT">Claude Code</span><span class="caret" aria-hidden="true"></span></p>
       <div class="actions">
         <a class="btn btn--primary" href="mailto:djaeseong.choi@gmail.com">메일 보내기</a>
@@ -371,7 +373,7 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
         <ul class="ticks entry__detail"><li>Node.js, MySQL, MongoDB로 서버와 데이터베이스</li><li>Docker, 리눅스, 네트워크 보안</li><li>Go Ethereum, Solidity, Hyperledger</li></ul>
       </article>
       <article class="entry grid">
-        <p class="entry__when">학력</p>
+        <p class="entry__when"><time datetime="2011-03">2011.03</time> ~ <time datetime="2017-02">2017.02</time><small>학력</small></p>
         <div class="entry__main"><h3>호서대학교</h3><p>컴퓨터소프트웨어학</p></div>
       </article>
       <article class="entry grid">
