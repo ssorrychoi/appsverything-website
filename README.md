@@ -20,7 +20,7 @@ Play Console 조직 계정의 "조직 웹사이트"로 쓰는 정적 사이트. 
 1. `apps/index.html`의 `<article class="app">` 하나를 복사해 이름·설명·링크를 바꾼다
 2. 아이콘: `sips -Z 256 <원본.png> --out images/<앱>.png`
 3. 방침이 있으면 `privacy/<앱>.html`로 둔다 (`apps/`에서는 `../privacy/`로 링크)
-4. 이력서 `index.html`에는 앱 목록이 없고 "출시한 앱 보기" 버튼으로 `apps/`에 연결한다. 앱 수가 바뀌면 "앱 7개"라고 적힌 네 곳을 같이 고친다: `<meta name="description">`, 첫 화면 소개 문장, AI 경험의 "AI 에이전트로 앱 출시" 줄, 경력의 AppsVerything 항목 (`grep -n "7개" index.html`로 찾기)
+4. 이력서 `index.html`에는 앱 목록이 없고 "출시한 앱 보기" 버튼으로 `apps/`에 연결한다. 앱 수가 바뀌면 "앱 7개"라고 적힌 네 곳을 같이 고친다: `<meta name="description">`, 첫 화면 소개 문장, AI 경험의 "AI 에이전트로 앱 출시" 줄, 경력의 AppsVerything 항목 (`grep -n "앱 7개" index.html`로 찾기)
 
 ## 배포 (Vercel)
 1. Vercel → New Project → 이 저장소 → Framework Preset `Other`, 빌드 명령 없음
