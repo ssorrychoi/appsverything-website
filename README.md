@@ -4,7 +4,7 @@ Play Console 조직 계정의 "조직 웹사이트"로 쓰는 정적 사이트. 
 
 | 파일 | 역할 |
 |---|---|
-| `index.html` | 이력서 (AI 경험, 경력, 도구, 교육과 병역, 연락처). Hallmark로 디자인 |
+| `index.html` | 이력서 (하는 일, 함께한 팀, AI 팀원, 배움과 복무, 연락처). 브랜드: "혼자서도 팀처럼 만드는 개발자". Hallmark로 디자인 |
 | `tokens.css`, `base.css` | 이력서 페이지의 색·글꼴·간격 토큰과 기본 규칙 (Hallmark Ultraviolet 테마, night 컬러웨이). 색은 여기서만 바꾼다 |
 | `apps/index.html` | 사업자 소개 + 앱 목록 (`/apps/`) |
 | `privacy/<앱>.html` | 앱별 개인정보처리방침 (스토어의 개인정보처리방침 URL) |
@@ -20,7 +20,7 @@ Play Console 조직 계정의 "조직 웹사이트"로 쓰는 정적 사이트. 
 1. `apps/index.html`의 `<article class="app">` 하나를 복사해 이름·설명·링크를 바꾼다
 2. 아이콘: `sips -Z 256 <원본.png> --out images/<앱>.png`
 3. 방침이 있으면 `privacy/<앱>.html`로 둔다 (`apps/`에서는 `../privacy/`로 링크)
-4. 이력서 `index.html`에는 앱 목록이 없고 "출시한 앱 보기" 버튼으로 `apps/`에 연결한다. 앱 수가 바뀌면 "앱 7개"라고 적힌 세 곳을 같이 고친다: `<meta name="description">`, AI 경험의 "AI 에이전트로 앱 출시" 줄, 경력의 AppsVerything 항목 (`grep -n "앱 7개" index.html`로 찾기)
+4. 이력서 `index.html`에는 앱 목록이 없고 "출시한 앱 보기" 버튼으로 `apps/`에 연결한다. 앱 수가 바뀌면 "앱 7개"라고 적힌 네 곳을 같이 고친다: `<meta name="description">`, 하는 일의 "기획부터 출시까지 혼자" 줄(회색 줄과 설명), 경력의 AppsVerything 항목 (`grep -n "앱 7개" index.html`로 찾기)
 
 ## 배포 (Vercel)
 1. Vercel → New Project → 이 저장소 → Framework Preset `Other`, 빌드 명령 없음
