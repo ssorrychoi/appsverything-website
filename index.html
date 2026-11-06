@@ -113,9 +113,104 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
   .nav ul { display: none; }
 }
 @media (max-width: 40rem) { .contact { grid-template-columns: minmax(0, 1fr); } }
+
+/* ===== 화려한 효과 ===== */
+
+/* 맨 위 스크롤 진행 막대 (지원하는 브라우저에서만) */
+.progress { position: fixed; inset: 0 0 auto; height: 3px; z-index: 20; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--color-glow-1), var(--color-glow-2), var(--color-glow-3)); pointer-events: none; }
+@supports (animation-timeline: scroll()) {
+  .progress { animation: grow linear both; animation-timeline: scroll(root); }
+  @keyframes grow { to { transform: scaleX(1); } }
+}
+
+/* 상단 바: 스크롤해도 따라오는 유리판 */
+.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in oklch, var(--color-paper) 72%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: var(--rule-hair) solid color-mix(in oklch, var(--color-rule) 60%, transparent); }
+
+/* 첫 화면: 오로라 빛, 격자, 마우스를 따라오는 조명 */
+.hero { position: relative; isolation: isolate; overflow: clip; min-height: min(88svh, 52rem); display: grid; align-content: center; padding-block: var(--space-3xl); }
+.hero .container { position: relative; z-index: 2; width: 100%; }
+.aurora { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.aurora span { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .55; will-change: transform; }
+.aurora span:nth-child(1) { width: 42rem; height: 42rem; right: -8rem; top: -12rem; background: var(--color-glow-1); animation: drift1 18s var(--ease-in-out) infinite alternate; }
+.aurora span:nth-child(2) { width: 30rem; height: 30rem; right: 18%; bottom: -14rem; background: var(--color-glow-2); opacity: .4; animation: drift2 22s var(--ease-in-out) infinite alternate; }
+.aurora span:nth-child(3) { width: 20rem; height: 20rem; right: 4%; top: 30%; background: var(--color-glow-3); opacity: .28; animation: drift3 15s var(--ease-in-out) infinite alternate; }
+@keyframes drift1 { to { transform: translate(-14rem, 8rem) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(10rem, -10rem) scale(.9); } }
+@keyframes drift3 { to { transform: translate(-18rem, -6rem) scale(1.3); } }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: linear-gradient(var(--color-rule) 1px, transparent 1px), linear-gradient(90deg, var(--color-rule) 1px, transparent 1px); background-size: 64px 64px; opacity: .45; mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, var(--color-ink) 10%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, var(--color-ink) 10%, transparent 75%); }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(32rem circle at var(--mx, 70%) var(--my, 40%), color-mix(in oklch, var(--color-glow-1) 22%, transparent), transparent 60%); }
+
+/* 이름은 크게, 직함은 빛나는 그라데이션 글씨 */
+.hero h1 { font-size: clamp(3.5rem, 9vw, 8.5rem); line-height: .98; max-width: none; }
+.shine { display: inline-block; background: linear-gradient(100deg, var(--color-glow-ink) 0%, var(--color-glow-1) 30%, var(--color-glow-2) 55%, var(--color-glow-3) 75%, var(--color-glow-ink) 100%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 7s linear infinite; }
+@keyframes shine { to { background-position: -220% 0; } }
+
+/* 지금 만드는 것: 타자 치듯 바뀌는 한 줄 */
+.typer { grid-column: 1 / -1; margin-top: var(--space-lg); font: 400 var(--text-lg)/1.4 ui-monospace, "SF Mono", Menlo, monospace; color: var(--color-ink-2); }
+.typer .prompt { color: var(--color-glow-3); margin-right: .6ch; }
+.typer .word { color: var(--color-ink); }
+.typer .caret { display: inline-block; width: .55ch; height: 1.1em; margin-left: var(--space-3xs); vertical-align: -.18em; background: var(--color-glow-2); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* 버튼: 빛 번짐과 훑고 지나가는 반사광 */
+.btn--primary { position: relative; overflow: hidden; background: linear-gradient(120deg, var(--color-accent-deep), var(--color-glow-2-deep)); box-shadow: 0 0 0 1px color-mix(in oklch, var(--color-glow-1) 60%, transparent), 0 10px 40px -8px color-mix(in oklch, var(--color-glow-1) 70%, transparent); transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out); }
+.btn--primary::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, var(--color-sheen) 50%, transparent 70%); transform: translateX(-120%); transition: transform 700ms var(--ease-out); }
+.btn--primary:hover { background: linear-gradient(120deg, var(--color-accent-deep), var(--color-glow-2-deep)); transform: translateY(-2px); box-shadow: 0 0 0 1px var(--color-glow-2), 0 16px 50px -6px color-mix(in oklch, var(--color-glow-2) 75%, transparent); }
+.btn--primary:hover::after { transform: translateX(120%); }
+.btn--secondary { transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+.btn--secondary:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.5px var(--color-glow-3), 0 0 28px -6px var(--color-glow-3); background: color-mix(in oklch, var(--color-paper-2) 70%, transparent); }
+
+/* 도구 이름이 흐르는 띠 */
+.marquee { position: relative; overflow: clip; border-block: var(--rule-hair) solid var(--color-rule); padding-block: var(--space-md); mask-image: linear-gradient(90deg, transparent, var(--color-ink) 10%, var(--color-ink) 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, var(--color-ink) 10%, var(--color-ink) 90%, transparent); }
+.marquee__track { display: flex; width: max-content; animation: slide 40s linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee ul { display: flex; gap: var(--space-2xl); margin: 0; padding: 0 var(--space-2xl) 0 0; list-style: none; font: 300 var(--text-title)/1 var(--font-display); color: var(--color-muted); white-space: nowrap; }
+.marquee li:nth-child(3n+1) { color: var(--color-glow-ink); }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* 경험 줄: 마우스를 따라오는 조명과 왼쪽 빛 막대 */
+.row { position: relative; isolation: isolate; }
+.row::before { content: ""; position: absolute; inset: 0 calc(var(--space-md) * -1); z-index: -1; border-radius: var(--radius-md, 16px); background: radial-gradient(28rem circle at var(--rx, 50%) var(--ry, 50%), color-mix(in oklch, var(--color-glow-1) 16%, transparent), transparent 65%); opacity: 0; transition: opacity var(--dur-long) var(--ease-out); }
+.row::after { content: ""; position: absolute; left: calc(var(--space-md) * -1); top: var(--space-xl); bottom: var(--space-xl); width: 3px; border-radius: 3px; background: linear-gradient(var(--color-glow-1), var(--color-glow-2)); transform: scaleY(0); transform-origin: top; transition: transform var(--dur-long) var(--ease-out); }
+.row:hover::before { opacity: 1; }
+.row:hover::after { transform: scaleY(1); }
+.row h3 { transition: color var(--dur-short) var(--ease-out); }
+.row:hover h3 { color: var(--color-glow-ink); }
+
+/* 알약: 마우스를 올리면 빛남 */
+.pill { transition: box-shadow var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); }
+.pill:hover { color: var(--color-ink); transform: translateY(-1px); box-shadow: inset 0 0 0 1.5px var(--color-glow-1), 0 0 18px -4px var(--color-glow-1); }
+
+/* 섹션 제목 옆 빛나는 짧은 선 */
+.head h2 { display: flex; align-items: center; gap: var(--space-md); }
+.head h2::after { content: ""; flex: 0 0 4rem; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--color-glow-1), transparent); }
+
+/* 경력 시기 숫자에 빛 색 */
+.entry__when time { color: var(--color-glow-ink); }
+
+/* 맺음: 뒤에서 퍼지는 빛과 그라데이션 문장 */
+.close { position: relative; isolation: isolate; overflow: clip; }
+.close::before { content: ""; position: absolute; z-index: -1; width: 60rem; height: 30rem; left: 50%; top: -10rem; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, color-mix(in oklch, var(--color-glow-1) 35%, transparent), transparent); filter: blur(20px); }
+.close .statement { background: linear-gradient(100deg, var(--color-ink), var(--color-glow-ink) 45%, var(--color-glow-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* 스크롤하면 아래에서 떠오름 (스크립트가 켜졌을 때만 숨겨 둠) */
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out); transition-delay: var(--d, 0ms); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (max-width: 60rem) {
+  .typer { font-size: var(--text-md); }
+  .aurora span:nth-child(1) { width: 26rem; height: 26rem; }
+  .row::before, .row::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora span, .shine, .marquee__track, .typer .caret { animation: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+  .progress { display: none; }
+}
 </style>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 <header class="nav">
   <div class="container">
     <a class="wordmark" href="./" aria-label="최재성, 처음으로">최재성</a>
@@ -132,14 +227,23 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
 
 <main>
   <section class="hero">
+    <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="container grid">
-      <h1>최재성<br>AI 앱 개발자</h1>
+      <h1>최재성<br><span class="shine">AI 앱 개발자</span></h1>
+      <p class="typer"><span class="prompt" aria-hidden="true">&gt;</span>지금 만드는 것: <span class="word" data-words="LLM 기능|AI 에이전트 앱|생성형 AI 영상|AI 마케팅 콘텐츠">LLM 기능</span><span class="caret" aria-hidden="true"></span></p>
       <div class="actions">
         <a class="btn btn--primary" href="mailto:djaeseong.choi@gmail.com">메일 보내기</a>
         <a class="btn btn--secondary" href="https://github.com/ssorrychoi" target="_blank" rel="noopener">GitHub 보기</a>
       </div>
     </div>
   </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <ul><li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Claude Code</li><li>Codex</li><li>Flutter</li><li>Dart</li><li>fal</li><li>Vrew</li><li>Riverpod</li><li>LLM</li></ul>
+      <ul><li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Claude Code</li><li>Codex</li><li>Flutter</li><li>Dart</li><li>fal</li><li>Vrew</li><li>Riverpod</li><li>LLM</li></ul>
+    </div>
+  </div>
 
   <section id="now">
     <div class="container">
@@ -290,5 +394,59 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
     <div class="signoff"><strong>최재성 드림</strong><span>2026 AppsVerything</span></div>
   </div>
 </footer>
+<script>
+// 화려한 효과: 스크립트가 없어도 내용은 모두 보이고, 움직임 줄이기 설정이면 움직이지 않는다
+(function () {
+  var root = document.documentElement;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1. 스크롤하면 떠오르는 요소 (같은 묶음 안에서는 차례로)
+  var targets = document.querySelectorAll('.row, .entry, .uses > div, .head, .close .statement, .contact > div');
+  if (!still && 'IntersectionObserver' in window) {
+    root.classList.add('js');
+    targets.forEach(function (el) {
+      var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.setProperty('--d', Math.min(i, 4) * 90 + 'ms');
+      el.classList.add('reveal');
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    targets.forEach(function (el) { io.observe(el); });
+  }
+
+  // 2. 첫 화면과 경험 줄에서 마우스를 따라오는 조명
+  var hero = document.querySelector('.hero');
+  hero.addEventListener('pointermove', function (e) {
+    var r = hero.getBoundingClientRect();
+    hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+  document.querySelectorAll('.row').forEach(function (row) {
+    row.addEventListener('pointermove', function (e) {
+      var r = row.getBoundingClientRect();
+      row.style.setProperty('--rx', (e.clientX - r.left) + 'px');
+      row.style.setProperty('--ry', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // 3. 타자 치듯 바뀌는 "지금 만드는 것"
+  var word = document.querySelector('.typer .word');
+  if (still || !word) return;
+  var words = word.dataset.words.split('|'), w = 0, n = words[0].length, deleting = true;
+  function tick() {
+    var cur = words[w];
+    if (deleting) {
+      n--; word.textContent = cur.slice(0, n);
+      if (n === 0) { deleting = false; w = (w + 1) % words.length; }
+      setTimeout(tick, 45);
+    } else {
+      var next = words[w]; n++; word.textContent = next.slice(0, n);
+      if (n === next.length) { deleting = true; setTimeout(tick, 2200); } else { setTimeout(tick, 90); }
+    }
+  }
+  setTimeout(tick, 2200);
+})();
+</script>
 </body>
 </html>

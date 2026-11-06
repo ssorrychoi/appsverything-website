@@ -15,6 +15,9 @@
   --color-rule: oklch(28% 0.04 290); --color-rule-2: oklch(44% 0.07 292);
   --color-accent: oklch(55% 0.25 290); --color-accent-deep: oklch(48% 0.24 290); --color-accent-soft: oklch(36% 0.09 293);
   --color-accent-ink: oklch(97% 0.01 300); --color-focus: oklch(62% 0.22 290);
+  /* 화려한 효과용 빛 색: 보라를 중심으로 자홍과 하늘색을 곁들인다 */
+  --color-glow-1: oklch(62% 0.26 290); --color-glow-2: oklch(66% 0.26 340); --color-glow-3: oklch(80% 0.13 210);
+  --color-glow-ink: oklch(88% 0.12 310); --color-glow-2-deep: oklch(50% 0.23 345); --color-sheen: oklch(100% 0 0 / .3);
   --font-display: "Outfit", "Pretendard Variable", Pretendard, ui-sans-serif, system-ui, sans-serif; --font-body: "Onest", "Pretendard Variable", Pretendard, ui-sans-serif, sans-serif;
   --font-outlier: "JetBrains Mono", ui-monospace, monospace;
   --radius-card: 16px; --radius-pill: 999px; --rule-hair: 1px;
