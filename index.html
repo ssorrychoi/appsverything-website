@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>최재성, 혼자서도 팀처럼 만드는 개발자</title>
-<meta name="description" content="AI 에이전트를 팀원처럼 쓰는 개발자 최재성의 이력서예요. 혼자 출시한 앱 7개, 코치 30명이 쓴 LLM 기능, Flutter 6년.">
+<title>최재성 | LLM 기능 연동과 AI 워크플로를 구현하는 개발자</title>
+<meta name="description" content="LLM 기능 연동과 AI 워크플로를 구현하는 개발자 최재성. 코치 약 30명이 사용한 LLM 피드백 기능 개발, Hermes 기반 마케팅 에이전트 팀 운영, 혼자 출시한 앱 7개와 Flutter 6년의 경험.">
 <meta name="theme-color" content="#120e1c">
 <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -59,6 +59,8 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
 /* 첫 화면: 선언 한 줄, 한 문장, 두 동작 */
 .hero { padding-block: var(--space-2xl); }
 .hero h1 { grid-column: 1 / 11; max-width: 16ch; text-wrap: wrap; }
+.hero__intro { grid-column: 1 / 10; max-width: 48rem; margin-top: var(--space-lg); color: var(--color-ink-2); font-size: var(--text-lg); line-height: 1.7; }
+@media (max-width: 60rem) { .hero__intro { grid-column: 1 / -1; } }
 .actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-xl); }
 
 /* 지금 하는 일: 머리줄 아래 세 줄 */
@@ -73,7 +75,7 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
 
 /* 경력: 종이색이 바뀌는 띠 */
 .band { background: var(--color-paper-2); color: var(--color-ink); padding-block: var(--section-gap-s); margin-top: var(--section-gap-l); }
-#career, #edu, #skills { scroll-margin-top: var(--space-lg); }
+#career, #edu, #skills, #llm-feedback { scroll-margin-top: var(--space-lg); }
 .entry { padding-block: var(--space-xl); border-top: var(--rule-hair) solid var(--color-rule); row-gap: var(--space-md); }
 .entry__when { grid-column: 1 / 4; font: 300 var(--text-lg)/1.3 var(--font-display); font-variant-numeric: tabular-nums; }
 .entry__when small { display: block; margin-top: var(--space-2xs); font: 400 var(--text-sm)/1.4 var(--font-body); color: var(--color-muted); }
@@ -225,6 +227,20 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
   .js .reveal { opacity: 1; transform: none; }
   .progress { display: none; }
 }
+
+/* 첫 화면: 이름, 제목과 짧은 소개 */
+.hero { min-height: min(88svh, 56rem); padding-block: clamp(48px, 7vw, 96px); }
+.hero .hello { grid-column: 1 / -1; font-size: var(--text-xl); color: var(--color-ink); margin-bottom: var(--space-xl); }
+.hero h1 { grid-column: 1 / 9; font-size: clamp(2.7rem, 5.5vw, 5.25rem); line-height: 1.16; align-self: start; }
+.hero__copy { grid-column: 1 / 8; margin-top: var(--space-lg); max-width: 38rem; color: var(--color-ink-2); font-size: var(--text-lg); line-height: 1.8; }
+.hero .typer { grid-column: 1 / 9; font-size: var(--text-sm); margin-top: var(--space-lg); min-height: 2.8em; }
+.hero .actions { grid-column: 1 / 9; margin-top: var(--space-md); }
+@media (max-width: 60rem) {
+  .hero h1, .hero__copy, .hero .typer, .hero .actions { grid-column: 1 / -1; }
+}
+@media (max-width: 40rem) {
+}
+
 </style>
 </head>
 <body>
@@ -236,7 +252,7 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
       <ul>
         <li><a href="#now">하는 일</a></li>
         <li><a href="#career">경력</a></li>
-        <li><a href="#skills">AI 팀원</a></li>
+        <li><a href="#skills">기술과 활용</a></li>
         <li><a href="apps/">앱 목록</a></li>
       </ul>
     </nav>
@@ -247,11 +263,12 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
   <section class="hero">
     <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="container grid">
-      <p class="hello">안녕하세요, 최재성입니다</p>
+      <p class="hello">최재성</p>
       <h1><span class="shine">혼자서도 팀처럼<br>만드는 개발자</span></h1>
-      <p class="typer"><span class="prompt" aria-hidden="true">&gt;</span>오늘의 팀원: <span class="word" data-words="Claude Code|Codex|Gemini|ChatGPT">Claude Code</span><span class="caret" aria-hidden="true"></span></p>
+      <p class="hero__copy">앱 출시 경험 위에 더한 LLM 기능 개발과<br>AI 에이전트 워크플로 구성·운영</p>
+      <p class="typer"><span class="prompt" aria-hidden="true">&gt;</span>지금 하는 일: <span class="word" data-words="Hermes 마케팅 에이전트 팀 운영|AI와 함께 앱 개발·출시|생성형 AI 콘텐츠 제작">Hermes 마케팅 에이전트 팀 운영</span><span class="caret" aria-hidden="true"></span></p>
       <div class="actions">
-        <a class="btn btn--primary" href="mailto:djaeseong.choi@gmail.com">메일 보내기</a>
+        <a class="btn btn--primary" href="#now">AI 프로젝트 보기</a>
         <a class="btn btn--secondary" href="https://github.com/ssorrychoi" target="_blank" rel="noopener">GitHub 보기</a>
       </div>
     </div>
@@ -259,38 +276,38 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee__track">
-      <ul><li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Claude Code</li><li>Codex</li><li>Flutter</li><li>Dart</li><li>fal</li><li>Vrew</li><li>Riverpod</li><li>LLM</li></ul>
-      <ul><li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Claude Code</li><li>Codex</li><li>Flutter</li><li>Dart</li><li>fal</li><li>Vrew</li><li>Riverpod</li><li>LLM</li></ul>
+      <ul><li>Hermes</li><li>LLM</li><li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Claude Code</li><li>Codex</li><li>Flutter</li><li>Dart</li><li>fal</li><li>Vrew</li><li>Riverpod</li></ul>
+      <ul><li>Hermes</li><li>LLM</li><li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Claude Code</li><li>Codex</li><li>Flutter</li><li>Dart</li><li>fal</li><li>Vrew</li><li>Riverpod</li></ul>
     </div>
   </div>
 
   <section id="now">
     <div class="container">
+      <div class="grid"><div class="head"><h2>AI로 만들고 운영하는 일</h2><p class="lead">실서비스 LLM 연동 및 에이전트 워크플로 구성·운영 경험</p></div></div>
       <ol class="rows">
         <li class="row grid">
-          <div class="row__title"><h2 class="visually-hidden">하는 일</h2><h3>기획부터 출시까지 혼자</h3><p class="muted">AppsVerything, 앱 7개</p></div>
+          <div class="row__title"><h3>LLM 피드백 기능 개발</h3><p class="muted">스프린트 · 유료 코치 약 30명 사용</p></div>
           <div class="row__body">
-            <p>Claude Code와 Codex를 팀원처럼 두고 기획, 개발, 출시를 혼자 해요. 그렇게 App Store와 Google Play에 앱 7개를 냈어요.</p>
-            <ul class="pills"><li class="pill">Claude Code</li><li class="pill">Codex</li><li class="pill">Flutter</li></ul>
+            <ul class="ticks">
+              <li>회원의 식단 기록 기반 LLM 피드백 초안 생성 기능의 Flutter 앱 개발</li>
+              <li>모델 선택, 스트리밍 응답 표시, 초안 수정·재생성 및 코치 검토 후 전송 흐름 구현</li>
+              <li>백엔드 개발자와 API 연동 협업 및 디자이너·프론트엔드·백엔드의 프롬프트 공동 작성</li>
+            </ul>
+            <ul class="pills"><li class="pill">LLM 서비스 연동</li><li class="pill">모델 선택</li><li class="pill">사용자 검토·수정</li></ul>
           </div>
-          <div class="row__links"><a class="btn btn--secondary" href="apps/">출시한 앱 보기</a></div>
+          <div class="row__links"><a class="btn btn--secondary" href="#llm-feedback">구현 경험 보기</a></div>
         </li>
-        <li class="row grid">
-          <div class="row__title"><h3>유튜브 채널 운영</h3><p class="muted">채널 2개</p></div>
+        <li class="row grid" id="hermes">
+          <div class="row__title"><h3>마케팅 에이전트 워크플로 구성·운영</h3><p class="muted">Hermes · 필라테스샵 2곳</p></div>
           <div class="row__body">
-            <p>기획, 대본, 영상 생성, 편집을 AI 도구로 이어 혼자 채널을 운영해요.</p>
-            <ul class="pills"><li class="pill">Claude</li><li class="pill">Codex</li><li class="pill">fal</li><li class="pill">Vrew</li></ul>
-          </div>
-          <div class="row__links">
-            <a class="thumb" href="https://www.youtube.com/@jeonyeok-maru" target="_blank" rel="noopener"><img src="images/channel-jeonyeok-maru.jpg" alt="" width="56" height="56" loading="lazy"><span><b>저녁 마루</b><small>유튜브 채널</small></span></a>
-            <a class="thumb" href="https://www.youtube.com/@algorithm_grace" target="_blank" rel="noopener"><img src="images/channel-algorithm-grace.jpg" alt="" width="56" height="56" loading="lazy"><span><b>알고리즘의은혜</b><small>유튜브 채널</small></span></a>
-          </div>
-        </li>
-        <li class="row grid">
-          <div class="row__title"><h3>필라테스샵 마케팅</h3><p class="muted">필라테스샵 2곳, 블로그와 인스타그램, 홈페이지</p></div>
-          <div class="row__body">
-            <p>블로그 글과 인스타그램 콘텐츠를 생성형 AI로 기획하고 만들어요. 생성형 AI 디지털 마케팅 1,000시간 과정도 수료했어요.</p>
-            <ul class="pills"><li class="pill">생성형 AI</li><li class="pill">네이버 블로그</li><li class="pill">인스타그램</li><li class="pill">홈페이지</li></ul>
+            <ul class="ticks">
+              <li>Hermes 기반 기획·작성·검수 에이전트 워크플로 구성 및 필라테스 블로그 콘텐츠 제작에 활용</li>
+              <li>브랜드 말투·타깃 고객·상품·근거 자료의 Markdown 지식베이스 구조화</li>
+              <li>역할별 참조 자료 지정 및 원고의 말투·정보 정확성 검수 절차 구성</li>
+              <li>검수 결과와 사람의 최종 검토를 위한 승인 큐 운영</li>
+              <li>필라테스샵 2곳의 블로그·인스타그램 콘텐츠 제작 및 홈페이지 운영 병행</li>
+            </ul>
+            <ul class="pills"><li class="pill">Hermes</li><li class="pill">멀티 에이전트 워크플로</li><li class="pill">컨텍스트 설계</li><li class="pill">브랜드 지식베이스</li><li class="pill">사람 승인 기반 검수</li></ul>
           </div>
           <div class="row__links">
             <div class="thumb thumb--multi"><img src="images/blog-pilates3.jpg" alt="" width="56" height="56" loading="lazy"><span><b>필라테스삼</b><span class="thumb__links"><a href="https://blog.naver.com/pilates_3" target="_blank" rel="noopener">블로그</a><a href="https://www.instagram.com/pilates3studio/" target="_blank" rel="noopener">인스타그램</a><a href="https://pilates3.vercel.app/" target="_blank" rel="noopener">홈페이지</a></span></span></div>
@@ -298,12 +315,23 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
           </div>
         </li>
         <li class="row grid">
-          <div class="row__title"><h3>회사에서 쌓은 6년</h3><p class="muted">Flutter 앱 개발, 스프린트와 브레인콜라</p></div>
+          <div class="row__title"><h3>기획부터 출시까지 혼자</h3><p class="muted">AppsVerything, 앱 7개</p></div>
           <div class="row__body">
-            <p>Flutter로 앱을 만들고 운영했어요. 마지막 프로젝트에서는 코치 30명이 쓴 LLM 피드백 기능을 만들었어요.</p>
-            <ul class="pills"><li class="pill">Flutter</li><li class="pill">LLM</li><li class="pill">ChatGPT</li><li class="pill">Claude</li><li class="pill">Gemini</li></ul>
+            <ul class="ticks"><li>Claude Code·Codex를 활용한 1인 앱 기획·개발 및 App Store·Google Play 출시</li><li>Flutter 기반 앱 7개 출시 경험</li></ul>
+            <ul class="pills"><li class="pill">Claude Code</li><li class="pill">Codex</li><li class="pill">Flutter</li></ul>
           </div>
-          <div class="row__links"><a class="btn btn--secondary" href="#career">경력 자세히 보기</a></div>
+          <div class="row__links"><a class="btn btn--secondary" href="apps/">출시한 앱 보기</a></div>
+        </li>
+        <li class="row grid">
+          <div class="row__title"><h3>유튜브 채널 운영</h3><p class="muted">채널 2개</p></div>
+          <div class="row__body">
+            <p>생성형 AI 도구를 활용한 기획·대본 작성·영상 생성·편집 및 유튜브 채널 2개 운영</p>
+            <ul class="pills"><li class="pill">Claude</li><li class="pill">Codex</li><li class="pill">fal</li><li class="pill">Vrew</li></ul>
+          </div>
+          <div class="row__links">
+            <a class="thumb" href="https://www.youtube.com/@jeonyeok-maru" target="_blank" rel="noopener"><img src="images/channel-jeonyeok-maru.jpg" alt="" width="56" height="56" loading="lazy"><span><b>저녁 마루</b><small>유튜브 채널</small></span></a>
+            <a class="thumb" href="https://www.youtube.com/@algorithm_grace" target="_blank" rel="noopener"><img src="images/channel-algorithm-grace.jpg" alt="" width="56" height="56" loading="lazy"><span><b>알고리즘의은혜</b><small>유튜브 채널</small></span></a>
+          </div>
         </li>
       </ol>
     </div>
@@ -312,14 +340,16 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
 
   <section id="career" class="band">
     <div class="container">
-      <div class="grid"><div class="head"><h2>함께한 팀</h2></div></div>
+      <div class="grid"><div class="head"><h2>경력</h2></div></div>
       <article class="entry grid">
         <p class="entry__when"><time datetime="2026-10">2026.10</time> ~ 현재</p>
         <div class="entry__main">
           <h3>AppsVerything</h3>
-          <p>1인 AI 앱 스튜디오, AI 에이전트가 팀원</p>
+          <p>1인 앱 개발 · AI 에이전트 기반 마케팅 운영</p>
           <ul class="ticks">
             <li>Claude Code와 Codex로 앱 7개를 기획하고 개발해 App Store와 Google Play에 출시</li>
+            <li>Hermes 기반 기획·작성·검수 에이전트 워크플로를 구성해 필라테스 블로그 콘텐츠 제작에 활용</li>
+            <li>브랜드 정보를 Markdown 지식베이스로 구조화하고 역할별 자료 참조 및 사람의 최종 승인 큐 구성</li>
             <li>생성형 AI로 유튜브 채널 2개, 필라테스샵 블로그와 인스타그램 콘텐츠 운영</li>
           </ul>
         </div>
@@ -328,17 +358,24 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
         <p class="entry__when"><time datetime="2021-06">2021.06</time> ~ <time datetime="2025-12">2025.12</time><small>4년 7개월</small></p>
         <div class="entry__main">
           <h3>(주)스프린트</h3>
-          <p>Flutter 모바일 앱 개발</p>
+          <p>Flutter 모바일 앱 전체 개발 · LLM 기능 연동</p>
           <div class="projs">
-          <div class="proj">
-            <h4>스프린트 코치용 앱 출시와 기능 개발 <span>2025.04부터</span></h4>
+          <div class="proj" id="llm-feedback">
+            <h4>스프린트 코치용 앱 출시와 LLM 피드백 기능 개발 <span>2025.04부터</span></h4>
+            <p>코치의 식단 피드백 작성 지원을 위한 LLM 초안 생성 기능 도입 · 유료 결제 후 LLM 기능을 사용한 코치 약 30명</p>
             <ul class="ticks">
-              <li>식단의 칼로리, 양, 음식 정보로 LLM이 피드백 초안을 쓰는 기능 개발, 코치 약 30명 사용</li>
-              <li>ChatGPT, Claude, Gemini 중 코치가 모델을 고르고, 초안은 코치가 고치거나 다시 생성해 전송</li>
-              <li>서버를 거쳐 호출해 요청 내용을 내부에서 확인하도록 설계</li>
-              <li>회원용 앱의 컴포넌트를 모노레포로 재사용해 새 앱을 빠르게 출시</li>
+              <li><b>담당 범위:</b> Flutter 코치용 모바일 앱 전체 개발 및 백엔드 개발자가 구현한 LangChain 기반 다중 LLM 서버와 API 연동</li>
+              <li><b>프롬프트 협업:</b> 디자이너·프론트엔드·백엔드 공동 작성 및 초기 답변의 어색한 말투에 대한 지침 보완</li>
+              <li><b>입력 정보:</b> 음식명·섭취량·칼로리, 회원 목표·체중·과거 식단의 텍스트 전달</li>
+              <li><b>생성 옵션:</b> 앱 내 모델·말투·답변 길이·피드백 분위기 선택 UI 구현</li>
+              <li><b>스트리밍 UI:</b> 응답의 점진적 표시 및 생성 중 버튼 비활성화</li>
+              <li><b>오류 처리:</b> 생성 실패 시 Snackbar 안내 및 수동 재시도 흐름 구현</li>
+              <li><b>검토 후 전송:</b> 초안 수정·재생성 및 코치의 전송 버튼을 통한 회원 전달 흐름 구현</li>
+              <li><b>운영 확인:</b> Slack webhook의 생성·전송 이벤트를 통한 실제 활용 여부 확인</li>
+              <li><b>도입 한계:</b> IT 활용에 익숙한 코치의 사용과 기존 수기 방식 선호 코치의 사용 장벽 확인</li>
+              <li>회원용 앱의 컴포넌트를 모노레포로 재사용해 코치용 앱 출시</li>
             </ul>
-            <ul class="pills"><li class="pill">Riverpod</li><li class="pill">go_router</li><li class="pill">Monorepo</li><li class="pill">LLM</li></ul>
+            <ul class="pills"><li class="pill">Flutter</li><li class="pill">Riverpod</li><li class="pill">go_router</li><li class="pill">LLM API 연동</li><li class="pill">스트리밍 UI</li><li class="pill">프롬프트 공동 설계</li></ul>
           </div>
           <div class="proj">
             <h4>스프린트 회원용 앱 전면 재개발과 운영 <span>2022.01부터</span></h4>
@@ -363,12 +400,14 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
           </ul>
         </div>
       </article>
-      <div class="grid" id="skills"><div class="head head--sub"><h2>나의 AI 팀원들</h2></div></div>
+      <div class="grid" id="skills"><div class="head head--sub"><h2>기술과 활용 경험</h2></div></div>
       <dl class="uses">
-        <div class="grid"><dt>같이 생각하는 팀원</dt><dd><ul class="pills"><li class="pill">ChatGPT</li><li class="pill">Claude</li><li class="pill">Gemini</li></ul></dd></div>
-        <div class="grid"><dt>같이 코딩하는 팀원</dt><dd><ul class="pills"><li class="pill">Claude Code</li><li class="pill">Codex</li></ul></dd></div>
-        <div class="grid"><dt>같이 영상 만드는 팀원</dt><dd><ul class="pills"><li class="pill">fal</li><li class="pill">Vrew</li></ul></dd></div>
-        <div class="grid"><dt>직접 다루는 기술</dt><dd><ul class="pills"><li class="pill">Flutter</li><li class="pill">Dart</li><li class="pill">Riverpod</li><li class="pill">GetX</li><li class="pill">go_router</li><li class="pill">Monorepo</li><li class="pill">인앱결제</li></ul></dd></div>
+        <div class="grid"><dt>에이전트 팀 운영</dt><dd>Hermes 기반 멀티 에이전트 워크플로 구성, 브랜드 지식베이스 구조화, 역할별 컨텍스트 설계 및 사람 승인 기반 검수</dd></div>
+        <div class="grid"><dt>LLM 기능 개발</dt><dd>LLM 서버 API 연동, 스트리밍 응답 UI, 모델·말투 선택 및 초안 검토·재생성·전송 구현</dd></div>
+        <div class="grid"><dt>기획·작성 보조 도구</dt><dd><ul class="pills"><li class="pill">ChatGPT</li><li class="pill">Claude</li><li class="pill">Gemini</li></ul></dd></div>
+        <div class="grid"><dt>개발 보조 도구</dt><dd><ul class="pills"><li class="pill">Claude Code</li><li class="pill">Codex</li></ul></dd></div>
+        <div class="grid"><dt>영상 제작 도구</dt><dd><ul class="pills"><li class="pill">fal</li><li class="pill">Vrew</li></ul></dd></div>
+        <div class="grid"><dt>앱 개발 기술</dt><dd><ul class="pills"><li class="pill">Flutter</li><li class="pill">Dart</li><li class="pill">Riverpod</li><li class="pill">GetX</li><li class="pill">go_router</li><li class="pill">Monorepo</li><li class="pill">인앱결제</li></ul></dd></div>
         <div class="grid"><dt>운영하는 채널</dt><dd><ul class="pills"><li class="pill">YouTube</li><li class="pill">네이버 블로그</li><li class="pill">인스타그램</li></ul></dd></div>
       </dl>
     </div>
@@ -377,7 +416,7 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
 
   <section id="edu">
     <div class="container">
-      <div class="grid"><div class="head"><h2>배움과 복무</h2></div></div>
+      <div class="grid"><div class="head"><h2>학력·교육·병역</h2></div></div>
       <article class="entry grid">
         <p class="entry__when"><time datetime="2026-04">2026.04</time> ~ <time datetime="2026-09">2026.09</time><small>100일, 1,000시간</small></p>
         <div class="entry__main"><h3>생성형 AI 기반 디지털 마케팅 전문가 양성 과정</h3><p>팀스파르타</p></div>
@@ -386,7 +425,7 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
       <article class="entry grid">
         <p class="entry__when"><time datetime="2019-04">2019.04</time> ~ <time datetime="2019-11">2019.11</time><small>1,184시간</small></p>
         <div class="entry__main"><h3>시큐어코딩 기반 블록체인 개발</h3><p>멀티캠퍼스</p></div>
-        <ul class="ticks entry__detail"><li>Node.js, MySQL, MongoDB로 서버와 데이터베이스</li><li>Docker, 리눅스, 네트워크 보안</li><li>Go Ethereum, Solidity, Hyperledger</li></ul>
+        <ul class="ticks entry__detail"><li>Node.js·MySQL·MongoDB 기반 서버·데이터베이스 학습</li><li>Docker·리눅스·네트워크 보안 학습</li><li>Go Ethereum·Solidity·Hyperledger 학습</li></ul>
       </article>
       <article class="entry grid">
         <p class="entry__when"><time datetime="2011-03">2011.03</time> ~ <time datetime="2017-02">2017.02</time><small>학력</small></p>
@@ -402,7 +441,7 @@ h4 { margin: 0; font: var(--display-weight) var(--text-lg)/1.25 var(--font-displ
 
 <footer class="close">
   <div class="container grid">
-    <p class="statement">작은 팀에서 큰 몫을 할 사람이 필요하면, 연락 주세요.</p>
+    <p class="statement">AI를 실제 서비스와 업무에 연결하는 개발자</p>
     <dl class="contact">
       <div><dt>이력서와 협업 문의</dt><dd><a class="link" href="mailto:djaeseong.choi@gmail.com">djaeseong.choi@gmail.com</a></dd></div>
       <div><dt>코드</dt><dd><a class="link" href="https://github.com/ssorrychoi" target="_blank" rel="noopener">github.com/ssorrychoi</a></dd></div>
